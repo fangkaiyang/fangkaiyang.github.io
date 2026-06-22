@@ -55,6 +55,16 @@ const renderPublicationVisual = (publication: Publication) => {
   `
 }
 
+const renderPublicationLinks = (publication: Publication) => {
+  const links = publication.links ?? [{ label: 'Paper', href: publication.href }]
+
+  return `
+    <div class="publication-links">
+      ${links.map((link) => renderExternalLink(link, 'paper-link')).join('')}
+    </div>
+  `
+}
+
 const renderPublication = (publication: Publication, isFeatured = false) => `
   <article class="publication-card${isFeatured ? ' featured-card' : ''}">
     ${renderPublicationVisual(publication)}
@@ -65,7 +75,7 @@ const renderPublication = (publication: Publication, isFeatured = false) => `
       </div>
       <h3><a href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">${escapeHtml(publication.title)}</a></h3>
       <p>${escapeHtml(publication.summary)}</p>
-      <a class="paper-link" href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">Paper</a>
+      ${renderPublicationLinks(publication)}
     </div>
   </article>
 `

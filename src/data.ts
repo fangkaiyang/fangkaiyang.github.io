@@ -16,6 +16,7 @@ export type Publication = {
   category: string
   href: string
   summary: string
+  links?: ProfileLink[]
   imageUrl?: string
   imageAlt?: string
 }
@@ -95,6 +96,13 @@ export const featuredPublications: Publication[] = [
     href: 'https://openreview.net/forum?id=iAuZVWCduc',
     summary:
       'A desktop agent operating-system direction for coordinating agent actions across applications and user tasks.',
+    links: [
+      { label: 'Paper', href: 'https://openreview.net/forum?id=iAuZVWCduc' },
+      { label: 'Code', href: 'https://github.com/microsoft/UFO' },
+      { label: 'Project', href: 'https://microsoft.github.io/UFO/' },
+    ],
+    imageUrl: 'https://microsoft.github.io/UFO/img/framework2.png',
+    imageAlt: 'UFO2 architecture overview',
   },
   {
     title: 'VEM: Environment-Free Exploration for Training GUI Agent with Value Environment Model',
@@ -104,15 +112,59 @@ export const featuredPublications: Publication[] = [
     href: 'https://openreview.net/forum?id=q1wLUxaBPn',
     summary:
       'A training approach for GUI agents that reduces dependence on live interactive environments.',
+    links: [
+      { label: 'Paper', href: 'https://openreview.net/forum?id=q1wLUxaBPn' },
+      { label: 'Code', href: 'https://github.com/microsoft/GUI-Agent-RL' },
+      { label: 'Project', href: 'https://microsoft.github.io/GUI-Agent-RL/' },
+    ],
+    imageUrl: 'https://microsoft.github.io/GUI-Agent-RL/structure.jpg',
+    imageAlt: 'VEM training framework overview',
   },
   {
-    title: 'AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents',
+    title: 'RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository',
     venue: 'ACL',
-    year: '2025',
-    category: 'LLM agents',
-    href: 'https://doi.org/10.18653/v1/2025.acl-long.381',
+    year: '2026',
+    category: 'Code intelligence',
+    href: 'https://arxiv.org/abs/2601.13943',
     summary:
-      'An API-first agent interaction framework for making human-agent-computer workflows more efficient.',
+      'A multilingual benchmark for repository-level microservice generation from requirements to runnable code.',
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2601.13943' },
+      { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/RepoGenesis' },
+      { label: 'Project', href: 'https://microsoft.github.io/DKI_LLM/RepoGenesis/RepoGenesis_index.html' },
+    ],
+    imageUrl: 'https://microsoft.github.io/DKI_LLM/RepoGenesis/static/images/overview.png',
+    imageAlt: 'RepoGenesis benchmark overview',
+  },
+  {
+    title: 'A Tale of Two Graphs: Separating Knowledge Exploration from Outline Structure for Open-Ended Deep Research',
+    venue: 'ICML',
+    year: '2026',
+    category: 'Deep research agents',
+    href: 'https://arxiv.org/abs/2602.13830',
+    summary:
+      'DualGraph separates knowledge exploration from report structure for long-horizon open-ended deep research.',
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2602.13830' },
+      { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/DualGraph' },
+      { label: 'Project', href: 'https://microsoft.github.io/DKI_LLM/dualgraph/dualgraph_index.html' },
+    ],
+    imageUrl: 'https://microsoft.github.io/DKI_LLM/dualgraph/static/images/overview.png',
+    imageAlt: 'DualGraph framework overview',
+  },
+  {
+    title: 'DoVer: Intervention-Driven Auto Debugging for LLM Multi-Agent Systems',
+    venue: 'ICLR',
+    year: '2026',
+    category: 'LLM agents',
+    href: 'https://arxiv.org/abs/2512.06749',
+    summary:
+      'An intervention-driven debugging framework that validates and repairs failures in LLM multi-agent traces.',
+    links: [
+      { label: 'Paper', href: 'https://arxiv.org/abs/2512.06749' },
+      { label: 'Code', href: 'https://github.com/microsoft/ACV/tree/main/misc/DoVer' },
+      { label: 'Project', href: 'https://mbjinx.github.io/DoVer_Web/' },
+    ],
   },
   {
     title: 'ProtoRAIL: A Risk-cognizant Imitation Agent for Adaptive vCPU Oversubscription In the Cloud',
@@ -123,14 +175,109 @@ export const featuredPublications: Publication[] = [
     summary:
       'Risk-aware imitation learning for cloud resource oversubscription under practical operational constraints.',
   },
+  {
+    title: 'Cross-Robot Behavior Adaptation Through Intention Alignment',
+    venue: 'Science Robotics',
+    year: '2026',
+    category: 'Robotics',
+    href: 'https://doi.org/10.1126/scirobotics.adv2250',
+    summary:
+      'Studies intention alignment as a mechanism for adapting behavior across robots in social interaction settings.',
+    links: [
+      { label: 'Paper', href: 'https://doi.org/10.1126/scirobotics.adv2250' },
+      {
+        label: 'Science ePrint',
+        href: 'https://www.science.org/eprint/VRHKZNXGPTPVY7TYDUIT/full?activationRedirect=/doi/full/10.1126/scirobotics.adv2250',
+      },
+    ],
+  },
 ]
 
 export const publicationGroups: PublicationGroup[] = [
   {
-    title: 'LLM agents, RAG, and code intelligence',
+    title: 'LLM agents and computer use',
     description:
-      'Recent work on computer-using agents, code generation and translation, RAG, reward learning, and structured reasoning.',
+      'Recent work on desktop and GUI agents, multi-agent debugging, world models, and human-agent-computer interaction.',
     publications: [
+      {
+        title: 'Computer-Using World Model',
+        venue: 'arXiv',
+        year: '2026',
+        category: 'Computer-using agents',
+        href: 'https://arxiv.org/abs/2602.17365',
+        summary: 'Models UI state transitions so agents can search over candidate actions before executing them.',
+      },
+      {
+        title: 'DoVer: Intervention-Driven Auto Debugging for LLM Multi-Agent Systems',
+        venue: 'ICLR',
+        year: '2026',
+        category: 'Multi-agent debugging',
+        href: 'https://arxiv.org/abs/2512.06749',
+        summary: 'Verifies failure hypotheses through targeted interventions in agent traces.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2512.06749' },
+          { label: 'Code', href: 'https://github.com/microsoft/ACV/tree/main/misc/DoVer' },
+          { label: 'Project', href: 'https://mbjinx.github.io/DoVer_Web/' },
+        ],
+      },
+      {
+        title: 'Learning GUI Grounding with Spatial Reasoning from Visual Feedback',
+        venue: 'ICML',
+        year: '2026',
+        category: 'GUI grounding',
+        href: 'https://arxiv.org/abs/2509.21552',
+        summary: 'Reframes GUI grounding as an interactive visual-feedback search problem.',
+      },
+      {
+        title: 'AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents',
+        venue: 'ACL',
+        year: '2025',
+        category: 'Human-agent-computer interaction',
+        href: 'https://doi.org/10.18653/v1/2025.acl-long.381',
+        summary: 'An API-first agent interaction framework for making human-agent-computer workflows more efficient.',
+      },
+      {
+        title: 'TaskWeaver: A Code-First Agent Framework',
+        venue: 'arXiv',
+        year: '2023',
+        category: 'Agent framework',
+        href: 'https://arxiv.org/abs/2311.17541',
+        summary: 'A code-first framework for building LLM agents that solve data analytics and domain tasks through executable code.',
+      },
+    ],
+  },
+  {
+    title: 'Code intelligence and repository agents',
+    description:
+      'Benchmarks, representations, and learning methods for repository-scale generation, translation, and code reasoning.',
+    publications: [
+      {
+        title: 'RepoGenesis: Benchmarking End-to-End Microservice Generation from Readme to Repository',
+        venue: 'ACL',
+        year: '2026',
+        category: 'Repository generation',
+        href: 'https://arxiv.org/abs/2601.13943',
+        summary: 'Benchmarks full microservice repository generation across languages, frameworks, and deployment requirements.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2601.13943' },
+          { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/RepoGenesis' },
+          { label: 'Project', href: 'https://microsoft.github.io/DKI_LLM/RepoGenesis/RepoGenesis_index.html' },
+        ],
+        imageUrl: 'https://microsoft.github.io/DKI_LLM/RepoGenesis/static/images/overview.png',
+        imageAlt: 'RepoGenesis benchmark overview',
+      },
+      {
+        title: 'Closing the Loop: Universal Repository Representation with RPG-Encoder',
+        venue: 'ICML',
+        year: '2026',
+        category: 'Repository representation',
+        href: 'https://arxiv.org/abs/2602.02084',
+        summary: 'Generalizes Repository Planning Graphs into a unified representation for repository comprehension and generation.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2602.02084' },
+          { label: 'Code', href: 'https://github.com/microsoft/RPG-ZeroRepo/tree/main/zerorepo/rpg_encoder' },
+        ],
+      },
       {
         title: 'WarriorCoder: Learning from Expert Battles to Augment Code Large Language Models',
         venue: 'ACL',
@@ -146,6 +293,79 @@ export const publicationGroups: PublicationGroup[] = [
         category: 'Code intelligence',
         href: 'https://doi.org/10.18653/v1/2025.emnlp-main.362',
         summary: 'Uses executability-aware representations to improve code translation.',
+      },
+      {
+        title: 'Skeleton-Guided-Translation: A Benchmarking Framework for Code Repository Translation with Fine-Grained Quality Evaluation',
+        venue: 'EMNLP Findings',
+        year: '2025',
+        category: 'Code translation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&citation_for_view=g4MrE6QAAAAJ:JV2RwH3_ST0C',
+        summary: 'Evaluates repository translation with skeleton guidance and fine-grained quality signals.',
+      },
+    ],
+  },
+  {
+    title: 'RAG, reasoning, and model learning',
+    description:
+      'Methods for deep research, retrieval-augmented reasoning, reward/value learning, self-refinement, and recommendation.',
+    publications: [
+      {
+        title: 'A Tale of Two Graphs: Separating Knowledge Exploration from Outline Structure for Open-Ended Deep Research',
+        venue: 'ICML',
+        year: '2026',
+        category: 'Deep research agents',
+        href: 'https://arxiv.org/abs/2602.13830',
+        summary: 'Uses co-evolving knowledge and outline graphs to guide long-horizon research report generation.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2602.13830' },
+          { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/DualGraph' },
+          { label: 'Project', href: 'https://microsoft.github.io/DKI_LLM/dualgraph/dualgraph_index.html' },
+        ],
+        imageUrl: 'https://microsoft.github.io/DKI_LLM/dualgraph/static/images/overview.png',
+        imageAlt: 'DualGraph framework overview',
+      },
+      {
+        title: 'RePrompt: Reasoning-Augmented Reprompting for Text-to-Image Generation via Reinforcement Learning',
+        venue: 'ICLR',
+        year: '2026',
+        category: 'Reasoning and generation',
+        href: 'https://arxiv.org/abs/2505.17540',
+        summary: 'Trains reasoning-based prompt rewriting for stronger compositional text-to-image generation.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2505.17540' },
+          { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/RePrompt' },
+          { label: 'Project', href: 'https://microsoft.github.io/DKI_LLM/reprompt/reprompt_index.html' },
+        ],
+        imageUrl: 'https://microsoft.github.io/DKI_LLM/reprompt/static/images/overreview.png',
+        imageAlt: 'RePrompt framework overview',
+      },
+      {
+        title: 'Pretrain Value, Not Reward: Decoupled Value Policy Optimization',
+        venue: 'ICLR',
+        year: '2026',
+        category: 'Reinforcement learning',
+        href: 'https://arxiv.org/abs/2502.16944',
+        summary: 'Pretrains a global value model as a stable critic for policy-only RLHF optimization.',
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2502.16944' },
+          { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/dvpo' },
+        ],
+      },
+      {
+        title: 'Learning to Refine: Self-Refinement of Parallel Reasoning in LLMs',
+        venue: 'ACL Findings',
+        year: '2026',
+        category: 'Self-refinement',
+        href: 'https://arxiv.org/abs/2509.00084',
+        summary: 'Studies self-refinement for improving parallel reasoning in large language models.',
+      },
+      {
+        title: 'DUET: Joint Exploration of User-Item Profiles in Recommendation System',
+        venue: 'ACL Findings',
+        year: '2026',
+        category: 'Recommendation',
+        href: 'https://arxiv.org/abs/2604.13801',
+        summary: 'Jointly explores user and item profiles for recommendation tasks.',
       },
       {
         title: 'Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation',
@@ -186,6 +406,22 @@ export const publicationGroups: PublicationGroup[] = [
     description:
       'Machine learning and agentic automation for cloud reliability, capacity management, scheduling, and operations.',
     publications: [
+      {
+        title: 'Enabling Autonomic Microservice Management Through Self-Learning Agents',
+        venue: 'arXiv',
+        year: '2025',
+        category: 'Autonomic systems',
+        href: 'https://arxiv.org/abs/2501.19056',
+        summary: 'Explores self-learning agents for autonomic management of microservice systems.',
+      },
+      {
+        title: 'Te-PID: An Adaptive Erasure Coding Temperature Management System for Optimized Cloud Storage',
+        venue: 'FSE',
+        year: '2025',
+        category: 'Cloud storage',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&citation_for_view=g4MrE6QAAAAJ:J_g5lzvAfSwC',
+        summary: 'Optimizes cloud storage erasure coding through adaptive temperature management.',
+      },
       {
         title: 'COIN: Chance-Constrained Imitation Learning for Safe and Adaptive Resource Oversubscription under Uncertainty',
         venue: 'CIKM',
@@ -234,6 +470,29 @@ export const publicationGroups: PublicationGroup[] = [
       'Selected work on socially aware robot behavior, crowd navigation, and human-agent interaction.',
     publications: [
       {
+        title: 'Cross-Robot Behavior Adaptation Through Intention Alignment',
+        venue: 'Science Robotics',
+        year: '2026',
+        category: 'Robot behavior adaptation',
+        href: 'https://doi.org/10.1126/scirobotics.adv2250',
+        summary: 'Studies how intention alignment supports behavior adaptation across robots.',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.1126/scirobotics.adv2250' },
+          {
+            label: 'Science ePrint',
+            href: 'https://www.science.org/eprint/VRHKZNXGPTPVY7TYDUIT/full?activationRedirect=/doi/full/10.1126/scirobotics.adv2250',
+          },
+        ],
+      },
+      {
+        title: 'Measuring Acoustics with Collaborative Multiple Agents',
+        venue: 'IJCAI',
+        year: '2023',
+        category: 'Multi-agent sensing',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&citation_for_view=g4MrE6QAAAAJ:4DMP91E08xMC',
+        summary: 'Uses collaborative agents for acoustic measurement in physical environments.',
+      },
+      {
         title: 'AppGAN: Generative Adversarial Networks for Generating Robot Approach Behaviors into Small Groups of People',
         venue: 'RO-MAN',
         year: '2019',
@@ -249,6 +508,22 @@ export const publicationGroups: PublicationGroup[] = [
         href: 'https://doi.org/10.1109/VS-Games.2019.8864512',
         summary: 'Studies navigation strategies that account for static and dynamic social groups.',
       },
+      {
+        title: 'Group Behavior Recognition Using Attention- and Graph-Based Neural Networks',
+        venue: 'ECAI',
+        year: '2020',
+        category: 'Group behavior',
+        href: 'https://doi.org/10.3233/FAIA200258',
+        summary: 'Recognizes group behavior using attention and graph neural network structures.',
+      },
+      {
+        title: 'App-LSTM: Data-Driven Generation of Socially Acceptable Trajectories for Approaching Small Groups of Agents',
+        venue: 'HAI',
+        year: '2019',
+        category: 'Social navigation',
+        href: 'https://doi.org/10.1145/3349537.3351895',
+        summary: 'Generates socially acceptable approach trajectories for agents entering small groups.',
+      },
     ],
   },
 ]
@@ -256,11 +531,11 @@ export const publicationGroups: PublicationGroup[] = [
 export const newsItems: NewsItem[] = [
   {
     date: '2026',
-    text: 'Recent TMLR papers explore desktop agents and environment-free GUI agent training.',
+    text: 'Papers accepted to ACL, ICML, ICLR, and TMLR cover repository generation, deep research agents, GUI agents, and model learning.',
   },
   {
     date: '2026',
-    text: 'Science Robotics paper on cross-robot behavior adaptation through intention alignment.',
+    text: 'Science Robotics paper studies cross-robot behavior adaptation through intention alignment.',
   },
   {
     date: '2025',

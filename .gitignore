@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 profile image/
+google scholar/
 
 # Editor directories and files
 .vscode/*
