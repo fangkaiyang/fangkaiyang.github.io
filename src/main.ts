@@ -1,13 +1,15 @@
 import './style.css'
 import {
-  featuredPublications,
+  biographyParagraphs,
   newsItems,
   profileLinks,
-  publicationGroups,
   quickFacts,
-  researchAreas,
+  selectedPublications,
+  workAreas,
   type ProfileLink,
   type Publication,
+  type RichTextPart,
+  type WorkArea,
 } from './data'
 
 const app = document.querySelector<HTMLDivElement>('#app')
@@ -29,10 +31,29 @@ const escapeHtml = (value: string) =>
     return entities[character]
   })
 
+const workHref = (slug: string) => `/work/${slug}/`
+
 const renderExternalLink = (link: ProfileLink, className = 'link') => `
   <a class="${className}" href="${escapeHtml(link.href)}" target="_blank" rel="noreferrer">
     ${escapeHtml(link.label)}
   </a>
+`
+
+const renderRichText = (parts: RichTextPart[]) =>
+  parts
+    .map((part) => (typeof part === 'string' ? escapeHtml(part) : renderExternalLink(part, 'inline-link')))
+    .join('')
+
+const renderHeader = () => `
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Fangkai Yang homepage">Fangkai Yang</a>
+    <nav aria-label="Primary navigation">
+      <a href="/#research">Research</a>
+      <a href="/#selected">Selected</a>
+      <a href="/#news">News</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </header>
 `
 
 const renderPublicationVisual = (publication: Publication) => {
@@ -55,184 +76,211 @@ const renderPublicationVisual = (publication: Publication) => {
   `
 }
 
-const renderPublicationLinks = (publication: Publication) => {
+const renderPublicationLinks = (publication: Publication, areaSlug?: string) => {
   const links = publication.links ?? [{ label: 'Paper', href: publication.href }]
+  const areaLink = areaSlug
+    ? `<a class="paper-link internal-paper-link" href="${workHref(areaSlug)}">View area</a>`
+    : ''
 
   return `
     <div class="publication-links">
       ${links.map((link) => renderExternalLink(link, 'paper-link')).join('')}
+      ${areaLink}
     </div>
   `
 }
 
-const renderPublication = (publication: Publication, isFeatured = false) => `
+const renderPublication = (publication: Publication, areaSlug?: string, isFeatured = false) => `
   <article class="publication-card${isFeatured ? ' featured-card' : ''}">
     ${renderPublicationVisual(publication)}
     <div class="publication-body">
       <div class="publication-meta">
         <span>${escapeHtml(publication.category)}</span>
+        <span>${escapeHtml(publication.venue)}</span>
         <span>${escapeHtml(publication.year)}</span>
       </div>
       <h3><a href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">${escapeHtml(publication.title)}</a></h3>
       <p>${escapeHtml(publication.summary)}</p>
-      ${renderPublicationLinks(publication)}
+      ${renderPublicationLinks(publication, areaSlug)}
     </div>
   </article>
 `
 
-app.innerHTML = `
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Fangkai Yang homepage">Fangkai Yang</a>
-    <nav aria-label="Primary navigation">
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+const renderWorkAreaCard = (area: WorkArea) => {
+  const featured = area.publications.find((publication) => publication.featured) ?? area.publications[0]
 
-  <main id="top">
-    <section class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Microsoft Research Asia / KTH Royal Institute of Technology</p>
-        <h1 id="hero-title">Fangkai Yang</h1>
-        <p class="lead">
-          I work on agentic AI systems, retrieval-augmented reasoning, code intelligence,
-          and learning-based automation for cloud systems, with earlier KTH-facing work in
-          human-aware robotics and social navigation.
-        </p>
-        <div class="profile-links" aria-label="Scholarly and professional links">
-          ${profileLinks.map((link) => renderExternalLink(link)).join('')}
-        </div>
+  return `
+    <article class="work-card">
+      <div class="work-card-visual">
+        ${renderPublicationVisual(featured)}
       </div>
-      <aside class="profile-panel" aria-label="Profile summary">
-        <img
-          class="portrait"
-          src="/profile.jpg"
-          alt="Fangkai Yang"
-          width="240"
-          height="240"
-        />
-        <dl>
-          ${quickFacts
+      <div class="work-card-body">
+        <p class="card-kicker">${escapeHtml(area.eyebrow)}</p>
+        <h3>${escapeHtml(area.title)}</h3>
+        <p>${escapeHtml(area.description)}</p>
+        <ul class="keyword-list">
+          ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
+        </ul>
+        <a class="area-link" href="${workHref(area.slug)}">View ${escapeHtml(area.shortTitle)}</a>
+      </div>
+    </article>
+  `
+}
+
+const renderQuickFacts = () => `
+  <dl>
+    ${quickFacts
+      .map(
+        (fact) => `
+          <div>
+            <dt>${escapeHtml(fact.label)}</dt>
+            <dd>${escapeHtml(fact.value)}</dd>
+          </div>
+        `,
+      )
+      .join('')}
+  </dl>
+`
+
+const renderHome = () => {
+  document.title = 'Fangkai Yang'
+
+  return `
+    ${renderHeader()}
+    <main id="top">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Microsoft Research Asia / Data, Knowledge, and Intelligence</p>
+          <h1 id="hero-title">Fangkai Yang</h1>
+          <p class="lead">
+            I build agentic AI systems that can use software, reason over structured knowledge,
+            write and evaluate code, and make reliable decisions in production and embodied environments.
+          </p>
+          <div class="profile-links" aria-label="Scholarly and research group links">
+            ${profileLinks.map((link) => renderExternalLink(link)).join('')}
+          </div>
+        </div>
+        <aside class="profile-panel" aria-label="Profile summary">
+          <img
+            class="portrait"
+            src="/profile.jpg"
+            alt="Fangkai Yang"
+            width="240"
+            height="240"
+          />
+          ${renderQuickFacts()}
+        </aside>
+      </section>
+
+      <section class="section split-section" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">About</p>
+          <h2 id="about-title">Research across agents, systems, and social intelligence.</h2>
+        </div>
+        <div class="prose">
+          ${biographyParagraphs.map((paragraph) => `<p>${renderRichText(paragraph)}</p>`).join('')}
+        </div>
+      </section>
+
+      <section id="research" class="section" aria-labelledby="research-title">
+        <div class="section-heading">
+          <p class="section-kicker">Research Programs</p>
+          <h2 id="research-title">Organized by the problems the papers are trying to solve</h2>
+          <p>
+            The homepage keeps only selected work visible. Full publication lists are grouped into research-program pages
+            so GUI agents, GUI grounding, code intelligence, RAG, cloud systems, and robotics are easier to browse.
+          </p>
+        </div>
+        <div class="work-grid">
+          ${workAreas.map((area) => renderWorkAreaCard(area)).join('')}
+        </div>
+      </section>
+
+      <section id="selected" class="section" aria-labelledby="selected-title">
+        <div class="section-heading compact-heading">
+          <p class="section-kicker">Selected Publications</p>
+          <h2 id="selected-title">Top conference and journal papers</h2>
+          <p>
+            A compact entry point to recent papers; each card links to the paper and its research-program page.
+          </p>
+        </div>
+        <div class="featured-grid">
+          ${selectedPublications
+            .map((publication) => renderPublication(publication, publication.areaSlug, true))
+            .join('')}
+        </div>
+      </section>
+
+      <section id="news" class="section split-section" aria-labelledby="news-title">
+        <div>
+          <p class="section-kicker">News</p>
+          <h2 id="news-title">Recent updates</h2>
+        </div>
+        <ol class="news-list">
+          ${newsItems
             .map(
-              (fact) => `
-                <div>
-                  <dt>${escapeHtml(fact.label)}</dt>
-                  <dd>${escapeHtml(fact.value)}</dd>
-                </div>
+              (item) => `
+                <li>
+                  <time>${escapeHtml(item.date)}</time>
+                  <span>${escapeHtml(item.text)}</span>
+                </li>
               `,
             )
             .join('')}
-        </dl>
-      </aside>
-    </section>
+        </ol>
+      </section>
 
-    <section class="section split-section" aria-labelledby="about-title">
-      <div>
-        <p class="section-kicker">About</p>
-        <h2 id="about-title">Research at the intersection of agents, systems, and decision making.</h2>
-      </div>
-      <div class="prose">
-        <p>
-          My recent publications study large language model agents, GUI and desktop automation,
-          retrieval-augmented question answering, code translation, and self-improving model behavior.
-          In parallel, my cloud systems work develops learning-based methods for reliability,
-          capacity management, failure prediction, and operational automation at Microsoft scale.
-        </p>
-        <p>
-          Earlier KTH-facing work explored social navigation and human-agent interaction,
-          including robot behavior in groups and crowds.
-        </p>
-      </div>
-    </section>
+      <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+        <div>
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">Scholarly profiles and research groups</h2>
+        </div>
+        <div class="contact-links">
+          ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
+        </div>
+      </section>
+    </main>
+  `
+}
 
-    <section id="research" class="section" aria-labelledby="research-title">
-      <div class="section-heading">
-        <p class="section-kicker">Research Themes</p>
-        <h2 id="research-title">Three connected lines of work</h2>
-      </div>
-      <div class="research-grid">
-        ${researchAreas
-          .map(
-            (area) => `
-              <article class="research-card">
-                <h3>${escapeHtml(area.title)}</h3>
-                <p>${escapeHtml(area.summary)}</p>
-                <ul>
-                  ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
-                </ul>
-              </article>
-            `,
-          )
-          .join('')}
-      </div>
-    </section>
+const renderCategoryPage = (area: WorkArea) => {
+  document.title = `${area.title} | Fangkai Yang`
 
-    <section class="section" aria-labelledby="featured-title">
-      <div class="section-heading compact-heading">
-        <p class="section-kicker">Selected Work</p>
-        <h2 id="featured-title">Recent featured publications</h2>
-      </div>
-      <div class="featured-grid">
-        ${featuredPublications.map((publication) => renderPublication(publication, true)).join('')}
-      </div>
-    </section>
+  return `
+    ${renderHeader()}
+    <main id="top" class="category-main">
+      <section class="category-hero" aria-labelledby="category-title">
+        <a class="back-link" href="/">Back to homepage</a>
+        <p class="eyebrow">${escapeHtml(area.eyebrow)}</p>
+        <h1 id="category-title">${escapeHtml(area.title)}</h1>
+        <p class="lead">${escapeHtml(area.description)}</p>
+        <div class="category-question">
+          <span>Research question</span>
+          <p>${escapeHtml(area.question)}</p>
+        </div>
+        <ul class="keyword-list category-keywords">
+          ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
+        </ul>
+      </section>
 
-    <section id="publications" class="section" aria-labelledby="publications-title">
-      <div class="section-heading">
-        <p class="section-kicker">Publications</p>
-        <h2 id="publications-title">Categorized publication list</h2>
-        <p>
-          This draft uses the KTH profile, Google Scholar, and ORCID as primary identity anchors,
-          then groups selected papers by research direction.
-        </p>
-      </div>
-      <div class="publication-groups">
-        ${publicationGroups
-          .map(
-            (group) => `
-              <section class="publication-group" aria-labelledby="${escapeHtml(group.title.replace(/[^a-z0-9]+/gi, '-').toLowerCase())}">
-                <div class="group-heading">
-                  <h3 id="${escapeHtml(group.title.replace(/[^a-z0-9]+/gi, '-').toLowerCase())}">${escapeHtml(group.title)}</h3>
-                  <p>${escapeHtml(group.description)}</p>
-                </div>
-                <div class="publication-list">
-                  ${group.publications.map((publication) => renderPublication(publication)).join('')}
-                </div>
-              </section>
-            `,
-          )
-          .join('')}
-      </div>
-    </section>
+      <section class="section" aria-labelledby="category-publications-title">
+        <div class="section-heading compact-heading">
+          <p class="section-kicker">Publication List</p>
+          <h2 id="category-publications-title">${escapeHtml(area.publications.length.toString())} papers in this program</h2>
+          <p>
+            Papers are ordered from newest to oldest, with project, code, PDF, or publisher links where available.
+          </p>
+        </div>
+        <div class="publication-list category-publication-list">
+          ${area.publications.map((publication) => renderPublication(publication)).join('')}
+        </div>
+      </section>
+    </main>
+  `
+}
 
-    <section class="section split-section" aria-labelledby="news-title">
-      <div>
-        <p class="section-kicker">News</p>
-        <h2 id="news-title">Recent updates</h2>
-      </div>
-      <ol class="news-list">
-        ${newsItems
-          .map(
-            (item) => `
-              <li>
-                <time>${escapeHtml(item.date)}</time>
-                <span>${escapeHtml(item.text)}</span>
-              </li>
-            `,
-          )
-          .join('')}
-      </ol>
-    </section>
+const normalizePath = (pathname: string) => pathname.replace(/\/index\.html$/, '').replace(/\/$/, '')
+const currentPath = normalizePath(window.location.pathname)
+const activeArea = workAreas.find((area) => currentPath === normalizePath(workHref(area.slug)))
 
-    <section id="contact" class="section contact-section" aria-labelledby="contact-title">
-      <div>
-        <p class="section-kicker">Contact</p>
-        <h2 id="contact-title">Scholarly profiles and code</h2>
-      </div>
-      <div class="contact-links">
-        ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
-      </div>
-    </section>
-  </main>
-`
+app.innerHTML = activeArea ? renderCategoryPage(activeArea) : renderHome()

@@ -13,6 +13,7 @@ dist-ssr
 *.local
 profile image/
 google scholar/
+paper-artifacts/
 
 # Editor directories and files
 .vscode/*
