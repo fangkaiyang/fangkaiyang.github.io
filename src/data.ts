@@ -71,12 +71,12 @@ export const recruitingNote =
 
 export const biographyParagraphs: RichTextPart[][] = [
   [
-    'I am a Senior Researcher at ',
+    'I am a Senior Researcher in the ',
     {
-      label: 'Microsoft',
-      href: 'https://www.microsoft.com/',
+      label: 'DKI group',
+      href: 'https://www.microsoft.com/en-us/research/group/data-knowledge-intelligence/',
     },
-    '. My current work studies agentic AI systems: computer-using agents, GUI grounding, repository-level code intelligence, retrieval-augmented reasoning, and model-learning methods that make agents more reliable in real workflows.',
+    ' at Microsoft Research. My current work studies agentic AI systems: computer-using agents, GUI grounding, repository-level code intelligence, retrieval-augmented reasoning, and model-learning methods that make agents more reliable in real workflows.',
   ],
   [
     'Before joining Microsoft, I received my bachelor degree from Zhejiang University and my master and PhD degrees from KTH Royal Institute of Technology, where I worked in the ',
@@ -92,7 +92,7 @@ export const biographyParagraphs: RichTextPart[][] = [
     ' and ',
     {
       label: 'Ginevra Castellano',
-      href: 'https://orcid.org/0000-0002-2841-6791',
+      href: 'https://www.uu.se/en/contact-and-organisation/staff?query=N14-947',
     },
     '. That earlier line of work focused on social navigation, group behavior, mixed reality, and human-agent interaction.',
   ],
@@ -104,7 +104,7 @@ export const biographyParagraphs: RichTextPart[][] = [
 export const quickFacts: QuickFact[] = [
   {
     label: 'Current affiliation',
-    value: 'Microsoft',
+    value: 'Microsoft Research, DKI group',
   },
   {
     label: 'Education',
@@ -1156,7 +1156,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Generates robot approach behaviors for entering small groups, using adversarial learning to model socially acceptable trajectories.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/RO-MAN46459.2019.8956425' }],
-        imageUrl: '/paper-images/appgan-preview.png',
+        imageUrl: '/paper-images/appgan-figure.png',
         imageAlt: 'AppGAN robot approach behavior preview',
       },
       {
