@@ -116,14 +116,11 @@ const renderPublicationAuthors = (publication: Publication, isCategory: boolean)
 }
 
 const renderPublicationDescription = (publication: Publication, isCategory: boolean) => {
-  const descriptions =
-    isCategory && publication.detailSummary && publication.detailSummary !== publication.summary
-      ? [publication.summary, publication.detailSummary]
-      : [publication.summary]
+  const description = isCategory ? (publication.detailSummary ?? publication.summary) : publication.summary
 
   return `
     <div class="publication-description">
-      ${descriptions.map((description) => `<p>${escapeHtml(description)}</p>`).join('')}
+      <p>${escapeHtml(description)}</p>
     </div>
   `
 }
@@ -298,10 +295,12 @@ const renderHome = () => {
           <p class="contact-email"><a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a></p>
           <p class="contact-note">${escapeHtml(recruitingNote)}</p>
         </div>
-        <div class="contact-links">
-          ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
+        <div class="contact-actions">
+          <div class="contact-links">
+            ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
+          </div>
+          ${renderVisitorWidget()}
         </div>
-        ${renderVisitorWidget()}
       </section>
     </main>
   `

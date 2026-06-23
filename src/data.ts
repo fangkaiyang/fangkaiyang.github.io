@@ -53,8 +53,8 @@ export const profileLinks: ProfileLink[] = [
     href: 'https://scholar.google.se/citations?user=g4MrE6QAAAAJ&hl=en',
   },
   {
-    label: 'ORCID',
-    href: 'https://orcid.org/0000-0002-3089-0345',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/fangkaiyang/',
   },
   {
     label: 'DKI group',
