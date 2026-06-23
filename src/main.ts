@@ -93,8 +93,8 @@ const renderPublicationLinks = (publication: Publication) => {
   `
 }
 
-const renderPublication = (publication: Publication, isCompact = false) => `
-  <article class="publication-card${isCompact ? ' compact-publication' : ''}">
+const renderPublication = (publication: Publication, isCompact = false, isCategory = false) => `
+  <article class="publication-card${isCompact ? ' compact-publication' : ''}${isCategory ? ' category-publication-card' : ''}">
     ${renderPublicationVisual(publication)}
     <div class="publication-body">
       <div class="publication-meta">
@@ -263,7 +263,7 @@ const renderCategoryPage = (area: WorkArea) => {
           <h2 id="category-publications-title">Publications</h2>
         </div>
         <div class="publication-list category-publication-list">
-          ${area.publications.map((publication) => renderPublication(publication)).join('')}
+          ${area.publications.map((publication) => renderPublication(publication, false, true)).join('')}
         </div>
       </section>
 

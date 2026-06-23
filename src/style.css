@@ -488,7 +488,7 @@ main {
 }
 
 .category-main {
-  max-width: 1040px;
+  max-width: 1180px;
 }
 
 .category-hero {
@@ -527,8 +527,22 @@ main {
   margin-top: 20px;
 }
 
-.category-publication-list .publication-card {
-  grid-template-columns: 190px minmax(0, 1fr);
+.category-publication-list .category-publication-card {
+  grid-template-columns: 1fr;
+}
+
+.category-publication-list .publication-image {
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--rule);
+  height: auto;
+  max-height: 520px;
+  padding: 18px;
+}
+
+.category-publication-list .publication-mark {
+  border-bottom: 1px solid var(--rule);
+  border-right: 0;
+  min-height: 150px;
 }
 
 .patent-list {
