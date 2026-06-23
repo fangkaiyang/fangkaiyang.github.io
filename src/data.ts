@@ -18,6 +18,7 @@ export type Publication = {
   category: string
   href: string
   summary: string
+  detailSummary?: string
   links?: ProfileLink[]
   imageUrl?: string
   imageAlt?: string
@@ -155,12 +156,12 @@ const workAreasSource: WorkArea[] = [
         venue: 'TMLR',
         year: '2026',
         category: 'Desktop agents',
-        href: 'https://openreview.net/forum?id=iAuZVWCduc',
+        href: 'https://arxiv.org/abs/2504.14603',
         summary:
           'A Windows desktop AgentOS that combines a host agent, application-specialized agents, native APIs, UI automation, and vision parsing to make computer-using agents more robust and less disruptive.',
         links: [
-          { label: 'Paper', href: 'https://openreview.net/forum?id=iAuZVWCduc' },
-          { label: 'arXiv', href: 'https://arxiv.org/abs/2504.14603' },
+          { label: 'Paper', href: 'https://arxiv.org/abs/2504.14603' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2504.14603' },
           { label: 'Project', href: 'https://microsoft.github.io/UFO/' },
           { label: 'Code', href: 'https://github.com/microsoft/UFO' },
         ],
@@ -174,12 +175,12 @@ const workAreasSource: WorkArea[] = [
         venue: 'TMLR',
         year: '2026',
         category: 'GUI agent training',
-        href: 'https://openreview.net/forum?id=q1wLUxaBPn',
+        href: 'https://arxiv.org/abs/2502.18906',
         summary:
           'An environment-free reinforcement learning framework for GUI agents where a pretrained value environment model guides exploration without costly live UI interaction.',
         links: [
-          { label: 'Paper', href: 'https://openreview.net/forum?id=q1wLUxaBPn' },
-          { label: 'arXiv', href: 'https://arxiv.org/abs/2502.18906' },
+          { label: 'Paper', href: 'https://arxiv.org/abs/2502.18906' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2502.18906' },
           { label: 'Project', href: 'https://microsoft.github.io/GUI-Agent-RL/' },
           { label: 'Code', href: 'https://github.com/microsoft/GUI-Agent-RL' },
         ],
@@ -767,10 +768,13 @@ const workAreasSource: WorkArea[] = [
         venue: 'ICLR',
         year: '2025',
         category: 'Reward learning',
-        href: 'https://openreview.net/forum?id=XuN5vAnr54',
+        href: 'https://arxiv.org/abs/2411.00418',
         summary:
           'Studies how LLMs can improve their reward-learning signals through self-evolution, reducing dependence on static external supervision.',
-        links: [{ label: 'Paper', href: 'https://openreview.net/forum?id=XuN5vAnr54' }],
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2411.00418' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2411.00418' },
+        ],
         imageUrl: '/paper-images/self-evolved-reward-framework.png',
         imageAlt: 'Self-evolved reward learning method overview',
         featured: true,
@@ -848,10 +852,13 @@ const workAreasSource: WorkArea[] = [
         venue: 'MLSys',
         year: '2025',
         category: 'Cloud resource management',
-        href: 'https://openreview.net/forum?id=Dt8s7CIsEu',
+        href: 'https://arxiv.org/abs/2401.07033',
         summary:
           'A risk-aware imitation-learning agent for adaptive vCPU oversubscription, designed around operational constraints in cloud resource management.',
-        links: [{ label: 'Paper', href: 'https://openreview.net/forum?id=Dt8s7CIsEu' }],
+        links: [
+          { label: 'Paper', href: 'https://arxiv.org/abs/2401.07033' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2401.07033' },
+        ],
         imageUrl: '/paper-images/protorail-overview.png',
         imageAlt: 'ProtoRAIL adaptive vCPU oversubscription overview',
         featured: true,
@@ -1344,6 +1351,161 @@ const workAreasSource: WorkArea[] = [
   },
 ]
 
+const publicationDetailSummaries: Record<string, string> = {
+  'tree-seeker':
+    'TreeSeeker frames deep search as a tree of trials, errors, and returns rather than a single linear chain. The method emphasizes recovery: agents can branch, diagnose failed paths, and reuse successful partial reasoning across long searches.',
+  ufo2:
+    'UFO2 turns desktop automation into an AgentOS-style architecture with host-level coordination, application-specific agents, native APIs, UI automation, and visual parsing. The work is aimed at making computer-using agents less brittle in realistic Windows workflows where actions can span multiple applications.',
+  vem:
+    'VEM trains GUI agents without repeatedly interacting with a live environment by learning a value environment model. The model provides feedback for exploration, making GUI-agent reinforcement learning more scalable when real UI interaction is slow, costly, or unstable.',
+  'gui-cursor':
+    'This work treats GUI grounding as spatial reasoning with visual feedback rather than one-shot coordinate prediction. It focuses on how an agent can iteratively refine where to click or act by inspecting the screen and correcting localization mistakes.',
+  'behavior-consistency':
+    'The paper argues that text-based world models must preserve the behavioral consequences of actions, not just produce plausible next-state descriptions. This is important for planning agents because a simulated state is only useful if it supports the same downstream decisions as the real environment.',
+  'computer-world-model':
+    'Computer-Using World Model studies how agents can forecast visual UI transitions before committing to an action. By imagining candidate outcomes, the agent can compare alternatives and avoid expensive or disruptive mistakes in live software.',
+  dover:
+    'DoVer uses active interventions to debug multi-agent LLM systems, asking whether changing a message, plan, or intermediate decision actually repairs a failed trajectory. This moves debugging beyond passive log inspection toward causal testing of agent failures.',
+  axis:
+    'AXIS studies human-agent-computer interaction where agents prefer high-level APIs when available and fall back to UI actions when necessary. The result is a more efficient interaction pattern for office-style tasks, reducing long visual action sequences while preserving human oversight.',
+  'large-action-models':
+    'This survey organizes the emerging large action model landscape from model design to grounding, execution, evaluation, and deployment. It is useful as a conceptual map for understanding how language models become systems that choose and carry out actions.',
+  taskweaver:
+    'TaskWeaver is a code-first agent framework that represents task solving as executable programs connected to plugins and stateful planning. This design is especially suited to data analytics and domain tasks where intermediate computation needs to be inspected and reused.',
+  repogenesis:
+    'RepoGenesis benchmarks the end-to-end generation of deployable microservice repositories from natural-language README-style requirements. It evaluates not just code snippets, but API coverage, repository completeness, tests, and deployment-oriented success.',
+  'rpg-encoder':
+    'RPG-Encoder uses repository planning graphs as a universal representation for understanding and generating repositories. The central idea is to close the loop between structural plans and concrete code so repository-level generation can be evaluated and refined more systematically.',
+  warriorcoder:
+    'WarriorCoder builds code-model training data from battles among expert models, turning competitive problem solving into supervision. The approach targets stronger and more diverse code reasoning by mining expert disagreements and successful solution strategies.',
+  execoder:
+    'ExeCoder improves code translation by representing executability signals rather than relying only on surface syntax. It combines functional semantics, syntax structure, and variable dependencies so translated programs are more likely to run correctly.',
+  'skeleton-guided-translation':
+    'Skeleton-Guided-Translation evaluates repository-level translation with structural guidance and fine-grained quality checks. The benchmark highlights that translating a project requires preserving architecture, dependencies, and maintainability, not only converting individual files.',
+  dualgraph:
+    'DualGraph separates knowledge exploration from outline construction for open-ended deep research. This lets an agent gather evidence and organize a report structure in parallel, reducing the coupling between retrieval order and final answer organization.',
+  genception:
+    'GenCeption evaluates vision-language models using unlabeled unimodal data, reducing dependence on expensive multimodal annotations. The method synthesizes evaluation signals from existing image or text resources to stress-test multimodal understanding.',
+  'introducing-genception':
+    'This workshop paper introduces the GenCeption idea for annotation-light multimodal benchmarking. It shows how generated or transformed examples can help evaluate vision-language systems when fully labeled multimodal datasets are unavailable.',
+  'ai-delegates':
+    'AI Delegates studies agents that represent users while balancing privacy protection and strategic self-disclosure. The work is about making delegated AI behavior useful without exposing more private information than the task requires.',
+  thread:
+    'Thread proposes logic units as a structured data organization layer for how-to question answering with RAG. By retrieving procedural logic rather than large raw chunks, the method aims to improve faithfulness and reduce irrelevant context.',
+  efficientrag:
+    'EfficientRAG targets multi-hop question answering with an iterative retriever that can generate follow-up queries and filter irrelevant evidence. The system is designed to reduce repeated LLM calls while still collecting the facts needed for multi-step reasoning.',
+  'autorag-hp':
+    'AutoRAG-HP automatically tunes RAG hyperparameters online, including choices that affect retrieval breadth and evidence quality. This helps RAG systems adapt to changing task distributions without manual sweeps for every deployment setting.',
+  'self-guard':
+    'SELF-GUARD explores how a language model can participate in its own safety checking during generation. The work frames safeguarding as an internal capability, allowing the model to detect risky outputs and regulate responses more directly.',
+  'call-me-when-necessary':
+    'This paper studies when LLMs should call structured environments or tools while reasoning. The goal is to preserve faithfulness to external state while avoiding unnecessary calls that make reasoning slower or harder to audit.',
+  'industrial-qa':
+    'This work adapts large language models for industrial domain-specific question answering, where task context and specialized knowledge matter more than generic fluency. It focuses on practical answer quality in settings with enterprise or operational terminology.',
+  'introspective-tips':
+    'Introspective Tips uses lightweight self-feedback to improve in-context decision making. The method encourages a model to reason about its own choices before committing, which can improve decisions without full retraining.',
+  adnanny:
+    'AdNanny unifies multiple offline ads recommendation tasks under a single reasoning-LLM framework. It targets practical recommendation workflows such as relevance understanding, task framing, and evaluation support for ads systems.',
+  duet:
+    'DUET jointly explores user and item profiles for recommendation systems, modeling both sides of the interaction rather than treating either side as fixed. This supports richer personalization and more adaptive recommendation behavior.',
+  'token-level-ppo':
+    'Token-Level PPO applies reinforcement learning at the token level for query generation. Compared with sequence-level rewards, the method provides finer-grained credit assignment for search and ads query optimization.',
+  'icl-bandit':
+    'ICL-Bandit combines in-context learning with bandit-style selection for relevance labeling in advertisement recommendation. The method focuses on choosing useful demonstrations and labels so LLM-based relevance judgments improve efficiently.',
+  lettingo:
+    'Lettingo studies user profile generation for recommendation systems, exploring how generated profiles can make user interests more explicit. The work complements profile-exploration methods by focusing on the user-side representation used for recommendation.',
+  reprompt:
+    'RePrompt trains a reasoning-augmented prompt rewriter for text-to-image generation through reinforcement learning. The system targets compositional and spatial failures by rewriting prompts with explicit reasoning before image generation.',
+  dvpo:
+    'DVPO decouples value pretraining from policy optimization so a value model can provide a more stable learning signal. The paper argues that pretraining value rather than reward can improve reinforcement learning from preferences and related optimization workflows.',
+  'learning-to-refine':
+    'Learning to Refine teaches LLMs to improve parallel reasoning traces by identifying and correcting weak steps. The approach is motivated by math reasoning settings where several candidate paths may contain partial but repairable solutions.',
+  adaptflow:
+    'AdaptFlow uses meta-learning to optimize workflow choices across tasks. The work connects agent planning with workflow-level adaptation, aiming to select better tool or reasoning strategies as task conditions change.',
+  warriormath:
+    'WarriorMath targets mathematical reasoning by making model training defect-aware. It analyzes common failure patterns and turns those defects into supervision that helps models avoid repeated reasoning mistakes.',
+  'self-evolved-reward-learning':
+    'Self-Evolved Reward Learning studies how LLMs can improve reward signals through iterative self-evolution. The method reduces dependence on static reward supervision by letting the model refine what kinds of outputs should be preferred.',
+  protorail:
+    'ProtoRAIL is a risk-cognizant imitation agent for adaptive vCPU oversubscription in cloud systems. It focuses on learning operational policies that increase resource efficiency while respecting the risk constraints of production infrastructure.',
+  'self-learning-microservices':
+    'This paper frames microservice management as a self-learning agent problem, where the system adapts from operational feedback over time. It connects autonomic computing goals with modern agent architectures for cloud management.',
+  'autonomic-computing-vision':
+    'This vision paper revisits autonomic computing through the lens of LLM agents. It discusses how self-configuration, self-healing, self-optimization, and self-protection could become more practical with language-model-based operational assistants.',
+  'te-pid':
+    'Te-PID optimizes erasure-coding temperature management for cloud storage. The system adapts storage behavior to workload temperature so production services can balance cost, durability, and performance.',
+  coin:
+    'COIN uses chance-constrained imitation learning for safe adaptive resource oversubscription. The method is designed for uncertain cloud environments where aggressive resource sharing must still respect reliability risk.',
+  'advanced-rl-scheduling':
+    'This work applies reinforcement learning to online scheduling of deferrable cloud workloads. It focuses on deciding when and where to schedule jobs while balancing resource efficiency, delay tolerance, and operational constraints.',
+  nissist:
+    'Nissist builds an incident mitigation copilot around troubleshooting guides and operational procedures. The system turns written remediation knowledge into guided assistance for diagnosing and mitigating production incidents.',
+  soil:
+    'SOIL uses score-conditioned diffusion modeling for imbalanced cloud failure prediction. It addresses the common production challenge where failure cases are rare but operationally important.',
+  'diffusion-failure-prediction':
+    'This paper uses diffusion-based time-series imputation to recover missing telemetry before cloud failure prediction. The goal is to make Microsoft 365 reliability models more robust when production monitoring data is incomplete or irregular.',
+  'decommissioning-prediction':
+    'This work models cloud asset decommissioning with contextual self-attentive temporal point processes. It supports lifecycle planning by predicting physical decommissioning events from temporal and contextual signals.',
+  nenya:
+    'NENYA uses cascade reinforcement learning for cost-aware failure mitigation in Microsoft 365. The system models mitigation as a staged decision process, balancing reliability improvements against operational cost.',
+  'container-reallocation':
+    'This production-oriented work studies intelligent container reallocation in Microsoft 365. It focuses on moving containers to improve efficiency and reliability while respecting the constraints of large-scale service operations.',
+  'cooperative-oversubscription':
+    'This paper learns cooperative oversubscription policies with chance-constrained multi-agent reinforcement learning. The setting captures how multiple resource managers can coordinate under uncertainty while controlling reliability risk.',
+  snape:
+    'SNAPE combines spot and on-demand virtual machines to reduce computing cost without sacrificing reliability. The system studies how to use interruptible capacity safely by mixing it with more stable resources.',
+  'spot-vm-eviction':
+    'This work predicts spot virtual machine evictions in Microsoft Cloud. Better eviction forecasts help services use low-cost interruptible compute while planning around the risk of interruption.',
+  'science-robotics-intention':
+    'This Science Robotics work studies cross-robot behavior adaptation through intention alignment. It asks how perceived intention can transfer across embodiments so different robots exhibit socially legible behavior.',
+  'acoustic-agents':
+    'This paper uses collaborative multiple agents to measure acoustics in physical environments. It connects embodied sensing with multi-agent coordination, where agents must decide how to move and collect measurements together.',
+  'multiparty-interaction':
+    'This chapter organizes the challenges of multiparty interaction between humans and socially interactive agents. It covers issues such as turn-taking, group formation, attention, and embodiment in multi-person settings.',
+  'approach-behavior-dataset':
+    'This dataset paper collects human and robot approaches into small free-standing conversational groups. The data supports learning and evaluation for social navigation scenarios where group geometry and approach direction matter.',
+  'trajectory-generation-perception':
+    'This work compares trajectory generation methods for robots approaching conversational groups and studies how observers perceive those approaches. It links path planning choices with human judgments of social appropriateness.',
+  'group-behavior-recognition':
+    'This paper recognizes group behavior using attention and graph-based neural networks. The method models relations among people, which is essential for social robots and virtual agents operating around groups.',
+  appgan:
+    'AppGAN generates robot approach behaviors for entering small groups of people. The adversarial setup is used to learn socially plausible approach trajectories from examples rather than hand-coding all interaction rules.',
+  'socially-appropriate-approach-rl':
+    'This work uses deep reinforcement learning to learn socially appropriate robot approaches toward groups. The key challenge is optimizing movement not only for reaching a target but also for respecting social space.',
+  'app-lstm':
+    'App-LSTM learns data-driven trajectories for approaching small groups of agents. It uses sequence modeling to capture how socially acceptable approach paths unfold over time.',
+  'social-aware-navigation':
+    'This work studies navigation in crowds with both static and dynamic groups. It emphasizes that socially aware navigation must account for group membership and group motion, not just individual obstacle avoidance.',
+  'criticality-collision-avoidance':
+    'This paper prioritizes collision avoidance decisions by criticality in crowd navigation. The method helps an agent decide which nearby interactions need attention first when many potential conflicts exist.',
+  'priority-local-optimization':
+    'Priority Driven Local Optimization improves crowd simulation by assigning priorities during local interaction resolution. The approach helps simulated pedestrians coordinate in dense, interaction-heavy scenes.',
+  'mixed-reality-social-distance':
+    'This paper investigates social distance judgments between humans, virtual humans, and virtual robots in mixed reality. It explores how embodiment changes the interpersonal spacing people expect around agents.',
+  'posture-embodiment-social-distance':
+    'This work examines how posture and embodiment affect social distance in mixed-reality human-agent interaction. It shows that body configuration and agent form both influence how people position themselves around virtual agents.',
+  'crowd-density-group-perception':
+    'This paper studies how crowd density and viewpoint shape whether observers perceive people as belonging to groups. The findings are relevant for crowd simulation and social agents that need to infer group structure.',
+  'neighbor-perception-model':
+    'This work models which neighbors pedestrians attend to in crowds. Selecting perceptually relevant neighbors helps simulation and navigation systems focus on the interactions that most affect movement decisions.',
+  'pedestrian-simulation-morl':
+    'This paper frames pedestrian simulation as a multi-objective reinforcement-learning problem. It balances goals such as progress, collision avoidance, and social plausibility rather than optimizing a single reward.',
+  'mixed-reality-hri-design':
+    'This work explores mixed reality as a design medium for human-robot interaction using virtual robots. It allows researchers to prototype robot behavior and study user responses before deploying physical hardware.',
+  'expressive-virtual-characters':
+    'This paper develops expressive virtual characters for social demonstration games. It connects character animation, social signaling, and interactive learning in early virtual-agent work.',
+  'virtual-poster-presenter':
+    'This work demonstrates a virtual poster presenter in mixed reality. It explores how a situated virtual agent can guide presentation and interaction around shared visual content.',
+}
+
+const attachPublicationDetailSummaries = (area: WorkArea): WorkArea => ({
+  ...area,
+  publications: area.publications.map((publication) => ({
+    ...publication,
+    detailSummary: publicationDetailSummaries[publication.id] ?? publication.summary,
+  })),
+})
+
 const workAreaOrder = [
   'code-intelligence',
   'reasoning-rag',
@@ -1354,9 +1516,9 @@ const workAreaOrder = [
   'embodied-agents',
 ]
 
-export const workAreas = [...workAreasSource].sort(
-  (first, second) => workAreaOrder.indexOf(first.slug) - workAreaOrder.indexOf(second.slug),
-)
+export const workAreas = [...workAreasSource]
+  .map(attachPublicationDetailSummaries)
+  .sort((first, second) => workAreaOrder.indexOf(first.slug) - workAreaOrder.indexOf(second.slug))
 
 export const selectedPublications = workAreas
   .flatMap((area) => area.publications.map((publication) => ({ ...publication, areaSlug: area.slug })))

@@ -93,6 +93,9 @@ const renderPublicationLinks = (publication: Publication) => {
   `
 }
 
+const getPublicationSummary = (publication: Publication, isCategory: boolean) =>
+  isCategory ? (publication.detailSummary ?? publication.summary) : publication.summary
+
 const renderPublication = (publication: Publication, isCompact = false, isCategory = false) => `
   <article class="publication-card${isCompact ? ' compact-publication' : ''}${isCategory ? ' category-publication-card' : ''}">
     ${renderPublicationVisual(publication)}
@@ -103,7 +106,7 @@ const renderPublication = (publication: Publication, isCompact = false, isCatego
         <span>${escapeHtml(publication.year)}</span>
       </div>
       <h3><a href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">${escapeHtml(publication.title)}</a></h3>
-      <p>${escapeHtml(publication.summary)}</p>
+      <p>${escapeHtml(getPublicationSummary(publication, isCategory))}</p>
       ${renderPublicationLinks(publication)}
     </div>
   </article>
