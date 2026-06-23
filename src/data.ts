@@ -19,6 +19,7 @@ export type Publication = {
   href: string
   summary: string
   detailSummary?: string
+  authors?: string[]
   links?: ProfileLink[]
   imageUrl?: string
   imageAlt?: string
@@ -1498,11 +1499,87 @@ const publicationDetailSummaries: Record<string, string> = {
     'This work demonstrates a virtual poster presenter in mixed reality. It explores how a situated virtual agent can guide presentation and interaction around shared visual content.',
 }
 
-const attachPublicationDetailSummaries = (area: WorkArea): WorkArea => ({
+const publicationAuthors: Record<string, string[]> = {
+  'tree-seeker': ['Zhuofan Shi', 'Mingzhe Ma', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Yiming Guan', 'Youling Huang', 'Wei Zhang', 'Qingwei Lin', 'Dongmei Zhang', 'Saravan Rajmohan'],
+  'ufo2': ['Chaoyun Zhang', 'He Huang', 'Chiming Ni', 'Jian Mu', 'Si Qin', 'Shilin He', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Chao Du', 'Liqun Li', 'Yu Kang', 'Zhao Jiang', 'Suzhen Zheng', 'Rujia Wang', 'Jiaxu Qian', 'Minghua Ma', 'Jian-Guang Lou', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  vem: ['Jiani Zheng', 'Lu Wang', 'Fangkai Yang', 'Chaoyun Zhang', 'Lingrui Mei', 'Wenjie Yin', 'Qingwei Lin', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  'gui-cursor': ['Yu Zhao', 'Wei-Ning Chen', 'Huseyin Atahan Inan', 'Samuel Kessler', 'Lu Wang', 'Lukas Wutschitz', 'Fangkai Yang', 'Chaoyun Zhang', 'Pasquale Minervini', 'Saravan Rajmohan', 'Robert Sim'],
+  'behavior-consistency': ['Youling Huang', 'Guanqiao Chen', 'Junchi Yao', 'Lu Wang', 'Fangkai Yang', 'Chao Du', 'ChenZhuo Zhao', 'Pu Zhao', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'computer-world-model': ['Yiming Guan', 'Rui Yu', 'John Zhang', 'Lu Wang', 'Chaoyun Zhang', 'Liqun Li', 'Bo Qiao', 'Si Qin', 'He Huang', 'Fangkai Yang', 'Pu Zhao', 'Lukas Wutschitz', 'Samuel Kessler', 'Huseyin A Inan', 'Robert Sim', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  dover: ['Ming Ma', 'Jue Zhang', 'Fangkai Yang', 'Yu Kang', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  axis: ['Junting Lu', 'Zhiyang Zhang', 'Fangkai Yang', 'Jue Zhang', 'Lu Wang', 'Chao Du', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  'large-action-models': ['Lu Wang', 'Fangkai Yang', 'Chaoyun Zhang', 'Junting Lu', 'Jiaxu Qian', 'Shilin He', 'Pu Zhao', 'Bo Qiao', 'Ray Huang', 'Si Qin', 'Qisheng Su', 'Jiayi Ye', 'Yudi Zhang', 'Jian-Guang Lou', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  taskweaver: ['Bo Qiao', 'Liqun Li', 'Xu Zhang', 'Shilin He', 'Yu Kang', 'Chaoyun Zhang', 'Fangkai Yang', 'Hang Dong', 'Jue Zhang', 'Lu Wang', 'Minghua Ma', 'Pu Zhao', 'Si Qin', 'Xiaoting Qin', 'Chao Du', 'Yong Xu', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  repogenesis: ['Zhiyuan Peng', 'Xin Yin', 'Pu Zhao', 'Fangkai Yang', 'Lu Wang', 'Ran Jia', 'Xu Chen', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'rpg-encoder': ['Jane Luo', 'Chengyu Yin', 'Xin Zhang', 'Qingtao Li', 'Steven Liu', 'Yiming Huang', 'Jie Wu', 'Hao Liu', 'Yangyu Huang', 'Yu Kang', 'Fangkai Yang', 'Ying Xin', 'Scarlett Li'],
+  warriorcoder: ['Huawen Feng', 'Pu Zhao', 'Qingfeng Sun', 'Can Xu', 'Fangkai Yang', 'Lu Wang', 'Qianli Ma', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  execoder: ['Minghua He', 'Yue Chen', 'Fangkai Yang', 'Pu Zhao', 'Wenjie Yin', 'Yu Kang', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'skeleton-guided-translation': ['Xing Zhang', 'Jiaheng Wen', 'Fangkai Yang', 'Pu Zhao', 'Yu Kang', 'Junhao Wang', 'Maoquan Wang', 'Yufan Huang', 'Elsie Nallipogu', 'Qingwei Lin', 'Yingnong Dang', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  dualgraph: ['Zhuofan Shi', 'Ming Ma', 'Zekun Yao', 'Fangkai Yang', 'Jue Zhang', 'Dongge Han', 'Victor Rühle', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  genception: ['Lele Cao', 'Valentin Buchner', 'Zineb Senane', 'Fangkai Yang'],
+  'introducing-genception': ['Lele Cao', 'Valentin Buchner', 'Zineb Senane', 'Fangkai Yang'],
+  'ai-delegates': ['Zhiyang Zhang', 'Xi Chen', 'Fangkai Yang', 'Xiaoting Qin', 'Chao Du', 'Xi Cheng', 'Hangxin Liu', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  thread: ['Kaikai An', 'Fangkai Yang', 'Liqun Li', 'Junting Lu', 'Sitao Cheng', 'Shuzheng Si', 'Lu Wang', 'Pu Zhao', 'Lele Cao', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Baobao Chang'],
+  efficientrag: ['Ziyuan Zhuang', 'Zhiyang Zhang', 'Sitao Cheng', 'Fangkai Yang', 'Jia Liu', 'Shujian Huang', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  'autorag-hp': ['Jia Fu', 'Xiaoting Qin', 'Fangkai Yang', 'Lu Wang', 'Jue Zhang', 'Qingwei Lin', 'Yubo Chen', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  'self-guard': ['Zezhong Wang', 'Fangkai Yang', 'Lu Wang', 'Pu Zhao', 'Hongru Wang', 'Liang Chen', 'Qingwei Lin', 'Kam-Fai Wong'],
+  'call-me-when-necessary': ['Sitao Cheng', 'Ziyuan Zhuang', 'Yong Xu', 'Fangkai Yang', 'Chaoyun Zhang', 'Xiaoting Qin', 'Xiang Huang', 'Ling Chen', 'Qingwei Lin', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  'industrial-qa': ['Fangkai Yang', 'Pu Zhao', 'Zezhong Wang', 'Lu Wang', 'Jue Zhang', 'Mohit Garg', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'introspective-tips': ['Liting Chen', 'Lu Wang', 'Hang Dong', 'Yali Du', 'Jie Yan', 'Fangkai Yang', 'Shuang Li', 'Pu Zhao', 'Si Qin', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  adnanny: ['Nan Hu', 'Han Li', 'Jimeng Sun', 'Lu Wang', 'Fangkai Yang', 'Bo Qiao', 'Pu Zhao', 'David Dai', 'Mengyu Liu', 'Yuefeng Zhan', 'Jianjin Zhang', 'Weihao Han', 'Allen Sun', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Denvy Deng', 'Feng Sun', 'Qi Zhang'],
+  duet: ['Yue Chen', 'Yifei Sun', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Minjie Hong', 'Yifei Dong', 'Minghua He', 'Nan Hu', 'Jianjin Zhang', 'Zhiwei Dai', 'Yuefeng Zhan', 'Weihao Han', 'Hao Sun', 'Qingwei Lin', 'Weiwei Deng', 'Feng Sun', 'Qi Zhang', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'token-level-ppo': ['Yichen Ouyang', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Chenghua Huang', 'Jianfeng Liu', 'Bochen Pang', 'Yaming Yang', 'Yuefeng Zhan', 'Hao Sun', 'Qingwei Lin', 'Saravan Rajmohan', 'Weiwei Deng', 'Dongmei Zhang', 'Feng Sun', 'Qi Zhang'],
+  'icl-bandit': ['Lu Wang', 'Chiming Duan', 'Pu Zhao', 'Fangkai Yang', 'Yong Shi', 'Xuefeng Luo', 'Bingjing Xu', 'Weiwei Deng', 'Qingwei Lin', 'Dongmei Zhang'],
+  lettingo: ['Lu Wang', 'Di Zhang', 'Fangkai Yang', 'Pu Zhao', 'Jianfeng Liu', 'Yuefeng Zhan', 'Hao Sun', 'Qingwei Lin', 'Weiwei Deng', 'Dongmei Zhang', 'Feng Sun', 'Qi Zhang'],
+  reprompt: ['Mingrui Wu', 'Lu Wang', 'Pu Zhao', 'Fangkai Yang', 'Jianjin Zhang', 'Jianfeng Liu', 'Yuefeng Zhan', 'Weihao Han', 'Hao Sun', 'Jiayi Ji', 'Xiaoshuai Sun', 'Qingwei Lin', 'Weiwei Deng', 'Dongmei Zhang', 'Feng Sun', 'Qi Zhang', 'Rongrong Ji'],
+  dvpo: ['Chenghua Huang', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Zhixu Li', 'Qingwei Lin', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  'learning-to-refine': ['Qibin Wang', 'Pu Zhao', 'Shaohan Huang', 'Fangkai Yang', 'Lu Wang', 'Furu Wei', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  adaptflow: ['Runchuan Zhu', 'Bowen Jiang', 'Lingrui Mei', 'Fangkai Yang', 'Lu Wang', 'Haoxiang Gao', 'Fengshuo Bai', 'Pu Zhao', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  warriormath: ['Yue Chen', 'Minghua He', 'Fangkai Yang', 'Pu Zhao', 'Lu Wang', 'Yu Kang', 'Yifei Dong', 'Yuefeng Zhan', 'Hao Sun', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'self-evolved-reward-learning': ['Chenghua Huang', 'Zhizhen Fan', 'Lu Wang', 'Fangkai Yang', 'Pu Zhao', 'Zeqi Lin', 'Qingwei Lin', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  protorail: ['Lu Wang', 'Mayukh Das', 'Fangkai Yang', 'Junjie Sheng', 'Bo Qiao', 'Hang Dong', 'Si Qin', 'Victor Rühle', 'Chetan Bansal', 'Eli Cortez', 'Íñigo Goiri', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  'self-learning-microservices': ['Fenglin Yu', 'Fangkai Yang', 'Xiaoting Qin', 'Zhiyang Zhang', 'Jue Zhang', 'Qingwei Lin', 'Hongyu Zhang', 'Yingnong Dang', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  'autonomic-computing-vision': ['Zhiyang Zhang', 'Fangkai Yang', 'Xiaoting Qin', 'Jue Zhang', 'Qingwei Lin', 'Gong Cheng', 'Dongmei Zhang', 'Saravan Rajmohan', 'Qi Zhang'],
+  'te-pid': ['Pei Xiao', 'Lu Wang', 'Fangkai Yang', 'Guoqing Geng', 'Haoran Li', 'Jeff Zhu', 'Yu Kang', 'Yifan Li', 'Terry Chen', 'Yue Chen', 'Saravan Rajmohan', 'Qi Zhang'],
+  coin: ['Lu Wang', 'Mayukh Das', 'Fangkai Yang', 'Chao Du', 'Bo Qiao', 'Hang Dong', 'Chetan Bansal', 'Si Qin', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang', 'Qi Zhang'],
+  'advanced-rl-scheduling': ['Hang Dong', 'Liwen Zhu', 'Zhao Shan', 'Bo Qiao', 'Fangkai Yang', 'Si Qin', 'Chuan Luo', 'Qingwei Lin', 'Yuwen Yang', 'Gurpreet Virdi', 'Saravan Rajmohan', 'Dongmei Zhang', 'Thomas Moscibroda'],
+  nissist: ['Kaikai An', 'Fangkai Yang', 'Junting Lu', 'Liqun Li', 'Zhixing Ren', 'Hao Huang', 'Lu Wang', 'Pu Zhao', 'Yu Kang', 'Hua Ding', 'Qingwei Lin', 'Saravan Rajmohan', 'Dongmei Zhang', 'Qi Zhang'],
+  soil: ['Chiming Duan', 'Fangkai Yang', 'Pu Zhao', 'Lingling Zheng', 'Yash Dagli', 'Yudong Liu', 'Qingwei Lin', 'Dongmei Zhang'],
+  'diffusion-failure-prediction': ['Fangkai Yang', 'Wenjie Yin', 'Lu Wang', 'Tianci Li', 'Pu Zhao', 'Bo Liu', 'Paul Wang', 'Bo Qiao', 'Yudong Liu', 'Mårten Björkman', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  'decommissioning-prediction': ['Fangkai Yang', 'Jue Zhang', 'Lu Wang', 'Bo Qiao', 'Di Weng', 'Xiaoting Qin', 'Gregory Weber', 'Durgesh Nandini Das', 'Srinivasan Rakhunathan', 'Ranganathan Srikanth', 'Qingwei Lin', 'Dongmei Zhang'],
+  nenya: ['Lu Wang', 'Pu Zhao', 'Chao Du', 'Chuan Luo', 'Mengna Su', 'Fangkai Yang', 'Yudong Liu', 'Qingwei Lin', 'Min Wang', 'Yingnong Dang', 'Hongyu Zhang', 'Saravan Rajmohan', 'Dongmei Zhang'],
+  'container-reallocation': ['Bo Qiao', 'Fangkai Yang', 'Chuan Luo', 'Yanan Wang', 'Johnny Li', 'Qingwei Lin', 'Hongyu Zhang', 'Mohit Datta', 'Andrew Zhou', 'Thomas Moscibroda', 'Saravanakumar Rajmohan', 'Dongmei Zhang'],
+  'cooperative-oversubscription': ['Junjie Sheng', 'Lu Wang', 'Fangkai Yang', 'Bo Qiao', 'Hang Dong', 'Xiangfeng Wang', 'Bo Jin', 'Jun Wang', 'Si Qin', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  snape: ['Fangkai Yang', 'Lu Wang', 'Zhenyu Xu', 'Jue Zhang', 'Liqun Li', 'Bo Qiao', 'Camille Couturier', 'Chetan Bansal', 'Soumya Ram', 'Si Qin', 'Zhen Ma', 'Íñigo Goiri', 'Eli Cortez', 'Terry Yang', 'Victor Rühle', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  'spot-vm-eviction': ['Fangkai Yang', 'Bowen Pang', 'Jue Zhang', 'Bo Qiao', 'Lu Wang', 'Camille Couturier', 'Chetan Bansal', 'Soumya Ram', 'Si Qin', 'Zhen Ma', 'Íñigo Goiri', 'Eli Cortez', 'Senthil Baladhandayutham', 'Victor Rühle', 'Saravan Rajmohan', 'Qingwei Lin', 'Dongmei Zhang'],
+  'science-robotics-intention': ['Xi Chen', 'Yuan Gao', 'Hangxin Liu', 'Fangkai Yang', 'Ali Ghadirzadeh', 'Jun Yang', 'Bin Liang', 'Chongjie Zhang', 'Tin Lun Lam', 'Song-Chun Zhu'],
+  'acoustic-agents': ['Yinfeng Yu', 'Changan Chen', 'Lele Cao', 'Fangkai Yang', 'Fuchun Sun'],
+  'multiparty-interaction': ['Sarah Gillet', 'Marynel Vázquez', 'Christopher Peters', 'Fangkai Yang', 'Iolanda Leite'],
+  'approach-behavior-dataset': ['Fangkai Yang', 'Yuan Gao', 'Ruiyang Ma', 'Sahba Zojaji', 'Ginevra Castellano', 'Christopher Peters'],
+  'trajectory-generation-perception': ['Fangkai Yang', 'Wenjie Yin', 'Marten Bjorkman', 'Christopher Peters'],
+  'group-behavior-recognition': ['Fangkai Yang', 'Wenjie Yin', 'Tetsunari Inamura', 'Marten Bjorkman', 'Christopher Peters'],
+  appgan: ['Fangkai Yang', 'Christopher Peters'],
+  'socially-appropriate-approach-rl': ['Yuan Gao', 'Fangkai Yang', 'Martin Frisk', 'Daniel Hernandez', 'Christopher Peters', 'Ginevra Castellano'],
+  'app-lstm': ['Fangkai Yang', 'Christopher Peters'],
+  'social-aware-navigation': ['Fangkai Yang', 'Christopher Peters'],
+  'criticality-collision-avoidance': ['Himangshu Saikia', 'Fangkai Yang', 'Christopher Peters'],
+  'priority-local-optimization': ['Himangshu Saikia', 'Fangkai Yang', 'Christopher Peters'],
+  'mixed-reality-social-distance': ['Christopher Peters', 'Chengjie Li', 'Fangkai Yang', 'Vanya Avramova', 'Gabriel Skantze'],
+  'posture-embodiment-social-distance': ['Chengjie Li', 'Theofronia Androulakaki', 'Alex Yuan Gao', 'Fangkai Yang', 'Himangshu Saikia', 'Christopher Peters', 'Gabriel Skantze'],
+  'crowd-density-group-perception': ['Fangkai Yang', 'Jack Shabo', 'Adam Qureshi', 'Christopher Peters'],
+  'neighbor-perception-model': ['Fangkai Yang', 'Himangshu Saikia', 'Christopher Peters'],
+  'pedestrian-simulation-morl': ['Naresh Balaji Ravichandran', 'Fangkai Yang', 'Christopher Peters', 'Anders Lansner', 'Pawel Herman'],
+  'mixed-reality-hri-design': ['Christopher Peters', 'Fangkai Yang', 'Himangshu Saikia', 'Chengjie Li', 'Gabriel Skantze'],
+  'expressive-virtual-characters': ['Fangkai Yang', 'Chengjie Li', 'Robin Palmberg', 'Ewoud Van Der Heide', 'Christopher Peters'],
+  'virtual-poster-presenter': ['Vanya Avramova', 'Fangkai Yang', 'Chengjie Li', 'Christopher Peters', 'Gabriel Skantze'],
+}
+
+const attachPublicationMetadata = (area: WorkArea): WorkArea => ({
   ...area,
   publications: area.publications.map((publication) => ({
     ...publication,
     detailSummary: publicationDetailSummaries[publication.id] ?? publication.summary,
+    authors: publicationAuthors[publication.id],
   })),
 })
 
@@ -1517,7 +1594,7 @@ const workAreaOrder = [
 ]
 
 export const workAreas = [...workAreasSource]
-  .map(attachPublicationDetailSummaries)
+  .map(attachPublicationMetadata)
   .sort((first, second) => workAreaOrder.indexOf(first.slug) - workAreaOrder.indexOf(second.slug))
 
 export const selectedPublications = workAreas

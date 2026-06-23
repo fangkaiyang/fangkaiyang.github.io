@@ -70,7 +70,9 @@ const renderPublicationVisual = (publication: Publication) => {
         class="publication-image"
         src="${escapeHtml(publication.imageUrl)}"
         alt="${escapeHtml(publication.imageAlt ?? publication.title)}"
-        loading="lazy"
+        width="1200"
+        height="675"
+        decoding="async"
       />
     `
   }
@@ -93,8 +95,38 @@ const renderPublicationLinks = (publication: Publication) => {
   `
 }
 
-const getPublicationSummary = (publication: Publication, isCategory: boolean) =>
-  isCategory ? (publication.detailSummary ?? publication.summary) : publication.summary
+const isFangkaiYang = (author: string) => author.trim().toLowerCase() === 'fangkai yang'
+
+const renderPublicationAuthors = (publication: Publication, isCategory: boolean) => {
+  if (!isCategory || !publication.authors?.length) {
+    return ''
+  }
+
+  return `
+    <p class="publication-authors">
+      ${publication.authors
+        .map((author) =>
+          isFangkaiYang(author)
+            ? `<strong class="publication-author-highlight">${escapeHtml(author)}</strong>`
+            : `<span>${escapeHtml(author)}</span>`,
+        )
+        .join(', ')}
+    </p>
+  `
+}
+
+const renderPublicationDescription = (publication: Publication, isCategory: boolean) => {
+  const descriptions =
+    isCategory && publication.detailSummary && publication.detailSummary !== publication.summary
+      ? [publication.summary, publication.detailSummary]
+      : [publication.summary]
+
+  return `
+    <div class="publication-description">
+      ${descriptions.map((description) => `<p>${escapeHtml(description)}</p>`).join('')}
+    </div>
+  `
+}
 
 const renderPublication = (publication: Publication, isCompact = false, isCategory = false) => `
   <article class="publication-card${isCompact ? ' compact-publication' : ''}${isCategory ? ' category-publication-card' : ''}">
@@ -106,7 +138,8 @@ const renderPublication = (publication: Publication, isCompact = false, isCatego
         <span>${escapeHtml(publication.year)}</span>
       </div>
       <h3><a href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">${escapeHtml(publication.title)}</a></h3>
-      <p>${escapeHtml(getPublicationSummary(publication, isCategory))}</p>
+      ${renderPublicationAuthors(publication, isCategory)}
+      ${renderPublicationDescription(publication, isCategory)}
       ${renderPublicationLinks(publication)}
     </div>
   </article>
@@ -161,71 +194,17 @@ const renderHomeAreaSection = (area: WorkArea) => `
   </article>
 `
 
-const visitorDots = [
-  { label: 'North America', x: 27, y: 38 },
-  { label: 'Northern Europe', x: 50, y: 30 },
-  { label: 'Western Europe', x: 48, y: 39 },
-  { label: 'East Asia', x: 70, y: 43 },
-  { label: 'Southeast Asia', x: 68, y: 58 },
-  { label: 'Australia', x: 76, y: 70 },
-]
-
 const visitorCounterUrl =
-  'https://hits.sh/fangkaiyang.github.io.svg?view=today-total&label=views&color=8a2f3f&labelColor=f1f4f6'
+  'https://s01.flagcounter.com/map/EupU/size_s/txt_28313B/border_D9DEE2/pageviews_1/viewers_0/flags_0/'
 
 const renderVisitorWidget = () => `
-  <section id="visitors" class="section visitor-section" aria-labelledby="visitor-title">
-    <div class="visitor-copy">
-      <p class="section-kicker">Visitors</p>
-      <h2 id="visitor-title">Global readership</h2>
-      <p>A lightweight world view for the site, with a compact page-view counter and regional activity markers.</p>
-    </div>
-    <div class="visitor-panel" aria-label="Visitor map and page-view counter">
-      <div class="visitor-globe" aria-label="Stylized earth map with visitor activity dots">
-        <img class="visitor-earth" src="/visitor-earth.svg" alt="Stylized earth map" loading="lazy" />
-        <div class="visitor-dot-layer" aria-hidden="true">
-          ${visitorDots
-            .map(
-              (dot) => `
-                <span
-                  class="visitor-dot"
-                  style="--dot-x: ${dot.x}%; --dot-y: ${dot.y}%"
-                  title="${escapeHtml(dot.label)}"
-                ></span>
-              `,
-            )
-            .join('')}
-        </div>
-      </div>
-      <div class="visitor-stats">
-        <div class="visitor-count">
-          <span>Page views</span>
-          <img
-            data-visitor-counter
-            alt="Page-view counter"
-            hidden
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          />
-          <strong data-visitor-preview>Preview</strong>
-        </div>
-        <dl>
-          <div>
-            <dt>Scope</dt>
-            <dd>Homepage</dd>
-          </div>
-          <div>
-            <dt>Map</dt>
-            <dd>Global</dd>
-          </div>
-          <div>
-            <dt>Format</dt>
-            <dd>Lightweight</dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-  </section>
+  <div class="visitor-badge" aria-label="Visitor counter">
+    <span>Visitors</span>
+    <a href="https://info.flagcounter.com/EupU" target="_blank" rel="noreferrer">
+      <img data-visitor-counter alt="Flag Counter visitor map" hidden loading="lazy" referrerpolicy="no-referrer" />
+      <strong data-visitor-preview>Flag map preview</strong>
+    </a>
+  </div>
 `
 
 const hydrateVisitorWidget = () => {
@@ -237,6 +216,10 @@ const hydrateVisitorWidget = () => {
   }
 
   if (window.location.hostname === 'fangkaiyang.github.io') {
+    counter.addEventListener('error', () => {
+      counter.hidden = true
+      preview.hidden = false
+    })
     counter.src = visitorCounterUrl
     counter.hidden = false
     preview.hidden = true
@@ -318,9 +301,8 @@ const renderHome = () => {
         <div class="contact-links">
           ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
         </div>
+        ${renderVisitorWidget()}
       </section>
-
-      ${renderVisitorWidget()}
     </main>
   `
 }
