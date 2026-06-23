@@ -161,6 +161,88 @@ const renderHomeAreaSection = (area: WorkArea) => `
   </article>
 `
 
+const visitorDots = [
+  { label: 'North America', x: 27, y: 38 },
+  { label: 'Northern Europe', x: 50, y: 30 },
+  { label: 'Western Europe', x: 48, y: 39 },
+  { label: 'East Asia', x: 70, y: 43 },
+  { label: 'Southeast Asia', x: 68, y: 58 },
+  { label: 'Australia', x: 76, y: 70 },
+]
+
+const visitorCounterUrl =
+  'https://hits.sh/fangkaiyang.github.io.svg?view=today-total&label=views&color=8a2f3f&labelColor=f1f4f6'
+
+const renderVisitorWidget = () => `
+  <section id="visitors" class="section visitor-section" aria-labelledby="visitor-title">
+    <div class="visitor-copy">
+      <p class="section-kicker">Visitors</p>
+      <h2 id="visitor-title">Global readership</h2>
+      <p>A lightweight world view for the site, with a compact page-view counter and regional activity markers.</p>
+    </div>
+    <div class="visitor-panel" aria-label="Visitor map and page-view counter">
+      <div class="visitor-globe" aria-label="Stylized earth map with visitor activity dots">
+        <img class="visitor-earth" src="/visitor-earth.svg" alt="Stylized earth map" loading="lazy" />
+        <div class="visitor-dot-layer" aria-hidden="true">
+          ${visitorDots
+            .map(
+              (dot) => `
+                <span
+                  class="visitor-dot"
+                  style="--dot-x: ${dot.x}%; --dot-y: ${dot.y}%"
+                  title="${escapeHtml(dot.label)}"
+                ></span>
+              `,
+            )
+            .join('')}
+        </div>
+      </div>
+      <div class="visitor-stats">
+        <div class="visitor-count">
+          <span>Page views</span>
+          <img
+            data-visitor-counter
+            alt="Page-view counter"
+            hidden
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+          <strong data-visitor-preview>Preview</strong>
+        </div>
+        <dl>
+          <div>
+            <dt>Scope</dt>
+            <dd>Homepage</dd>
+          </div>
+          <div>
+            <dt>Map</dt>
+            <dd>Global</dd>
+          </div>
+          <div>
+            <dt>Format</dt>
+            <dd>Lightweight</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+`
+
+const hydrateVisitorWidget = () => {
+  const counter = document.querySelector<HTMLImageElement>('[data-visitor-counter]')
+  const preview = document.querySelector<HTMLElement>('[data-visitor-preview]')
+
+  if (!counter || !preview) {
+    return
+  }
+
+  if (window.location.hostname === 'fangkaiyang.github.io') {
+    counter.src = visitorCounterUrl
+    counter.hidden = false
+    preview.hidden = true
+  }
+}
+
 const renderHome = () => {
   document.title = 'Fangkai Yang'
 
@@ -237,6 +319,8 @@ const renderHome = () => {
           ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
         </div>
       </section>
+
+      ${renderVisitorWidget()}
     </main>
   `
 }
@@ -297,3 +381,5 @@ const currentPath = normalizePath(window.location.pathname)
 const activeArea = workAreas.find((area) => currentPath === normalizePath(workHref(area.slug)))
 
 app.innerHTML = activeArea ? renderCategoryPage(activeArea) : renderHome()
+
+hydrateVisitorWidget()
