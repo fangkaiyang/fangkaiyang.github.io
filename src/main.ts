@@ -83,21 +83,17 @@ const renderPublicationVisual = (publication: Publication) => {
   `
 }
 
-const renderPublicationLinks = (publication: Publication, areaSlug?: string) => {
+const renderPublicationLinks = (publication: Publication) => {
   const links = publication.links ?? [{ label: 'Paper', href: publication.href }]
-  const areaLink = areaSlug
-    ? `<a class="paper-link internal-paper-link" href="${workHref(areaSlug)}">View area</a>`
-    : ''
 
   return `
     <div class="publication-links">
       ${links.map((link) => renderExternalLink(link, 'paper-link')).join('')}
-      ${areaLink}
     </div>
   `
 }
 
-const renderPublication = (publication: Publication, areaSlug?: string, isCompact = false) => `
+const renderPublication = (publication: Publication, isCompact = false) => `
   <article class="publication-card${isCompact ? ' compact-publication' : ''}">
     ${renderPublicationVisual(publication)}
     <div class="publication-body">
@@ -108,7 +104,7 @@ const renderPublication = (publication: Publication, areaSlug?: string, isCompac
       </div>
       <h3><a href="${escapeHtml(publication.href)}" target="_blank" rel="noreferrer">${escapeHtml(publication.title)}</a></h3>
       <p>${escapeHtml(publication.summary)}</p>
-      ${renderPublicationLinks(publication, areaSlug)}
+      ${renderPublicationLinks(publication)}
     </div>
   </article>
 `
@@ -156,7 +152,7 @@ const renderHomeAreaSection = (area: WorkArea) => `
     </div>
     <div class="area-publications">
       ${getHomepagePublications(area)
-        .map((publication) => renderPublication(publication, area.slug, true))
+        .map((publication) => renderPublication(publication, true))
         .join('')}
     </div>
   </article>

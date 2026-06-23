@@ -120,7 +120,7 @@ export const quickFacts: QuickFact[] = [
   },
 ]
 
-export const workAreas: WorkArea[] = [
+const workAreasSource: WorkArea[] = [
   {
     slug: 'computer-use',
     title: 'Computer-Using Agents and GUI Intelligence',
@@ -379,7 +379,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'skeleton-guided-translation',
         title: 'Skeleton-Guided-Translation: A Benchmarking Framework for Code Repository Translation with Fine-Grained Quality Evaluation',
-        venue: 'EMNLP Findings',
+        venue: 'EMNLP',
         year: '2025',
         category: 'Repository translation',
         href: 'https://arxiv.org/abs/2501.16050',
@@ -439,7 +439,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'duet',
         title: 'DUET: Joint Exploration of User-Item Profiles in Recommendation System',
-        venue: 'ACL Findings',
+        venue: 'ACL',
         year: '2026',
         category: 'Recommendation',
         href: 'https://arxiv.org/abs/2604.13801',
@@ -452,7 +452,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'icl-bandit',
         title: 'ICL-Bandit: Relevance Labeling in Advertisement Recommendation Systems via LLM',
-        venue: 'EMNLP Findings',
+        venue: 'EMNLP',
         year: '2025',
         category: 'Ads recommendation',
         href: 'https://aclanthology.org/2025.findings-emnlp.1273/',
@@ -560,7 +560,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'autorag-hp',
         title: 'AutoRAG-HP: Automatic Online Hyper-Parameter Tuning for Retrieval-Augmented Generation',
-        venue: 'EMNLP Findings',
+        venue: 'EMNLP',
         year: '2024',
         category: 'RAG optimization',
         href: 'https://aclanthology.org/2024.findings-emnlp.223/',
@@ -592,7 +592,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'call-me-when-necessary',
         title: 'Call Me When Necessary: LLMs can Efficiently and Faithfully Reason over Structured Environments',
-        venue: 'ACL Findings',
+        venue: 'ACL',
         year: '2024',
         category: 'Tool use and reasoning',
         href: 'https://aclanthology.org/2024.findings-acl.254/',
@@ -688,7 +688,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'learning-to-refine',
         title: 'Learning to Refine: Self-Refinement of Parallel Reasoning in LLMs',
-        venue: 'ACL Findings',
+        venue: 'ACL',
         year: '2026',
         category: 'Self-refinement',
         href: 'https://arxiv.org/abs/2509.00084',
@@ -718,7 +718,7 @@ export const workAreas: WorkArea[] = [
       {
         id: 'adaptflow',
         title: 'AdaptFlow: Adaptive Workflow Optimization via Meta-Learning',
-        venue: 'EMNLP Findings',
+        venue: 'EMNLP',
         year: '2025',
         category: 'Meta-learning',
         href: 'https://aclanthology.org/2025.findings-emnlp.175/',
@@ -776,54 +776,38 @@ export const workAreas: WorkArea[] = [
     homepagePublicationIds: ['snape', 'te-pid', 'decommissioning-prediction', 'nenya', 'diffusion-failure-prediction'],
     patents: [
       {
-        id: 'dynamic-vm-adjustment-patent-application',
-        title: 'System and Method of Dynamically Adjusting Virtual Machines for a Workload',
-        venue: 'US Patent App. 19/316,549',
-        year: '2026',
-        category: 'Patent application',
-        href: 'https://patents.google.com/?q=%22System+and+method+of+dynamically+adjusting+virtual+machines+for+a+workload%22',
-        summary: 'Patent application on dynamically adjusting virtual machines for workload needs in cloud environments.',
-        links: [
-          {
-            label: 'Patent search',
-            href: 'https://patents.google.com/?q=%22System+and+method+of+dynamically+adjusting+virtual+machines+for+a+workload%22',
-          },
-        ],
-      },
-      {
-        id: 'oversubscription-learner-patent-application',
-        title: 'Oversubscription Reinforcement Learner',
-        venue: 'US Patent App. 18/993,509',
-        year: '2026',
-        category: 'Patent application',
-        href: 'https://patents.google.com/?q=%22Oversubscription+reinforcement+learner%22',
-        summary: 'Patent application covering reinforcement-learning methods for cloud resource oversubscription.',
-        links: [{ label: 'Patent search', href: 'https://patents.google.com/?q=%22Oversubscription+reinforcement+learner%22' }],
-      },
-      {
         id: 'dynamic-vm-adjustment-patent',
         title: 'System and Method of Dynamically Adjusting Virtual Machines for a Workload',
-        venue: 'US Patent 12,423,160',
-        year: '2025',
+        venue: 'US Patent 12,423,160; US Patent App. 19/316,549',
+        year: '2025-2026',
         category: 'Patent',
-        href: 'https://patents.google.com/?q=%22System+and+method+of+dynamically+adjusting+virtual+machines+for+a+workload%22',
-        summary: 'Issued patent on dynamically adjusting virtual machines for a workload.',
+        href: 'https://patents.google.com/patent/US12423160B2/en',
+        summary:
+          'Issued patent and related application on dynamically adjusting virtual machines for workload needs in cloud environments.',
         links: [
+          { label: 'Patent', href: 'https://patents.google.com/patent/US12423160B2/en' },
           {
-            label: 'Patent search',
+            label: 'Application search',
             href: 'https://patents.google.com/?q=%22System+and+method+of+dynamically+adjusting+virtual+machines+for+a+workload%22',
           },
         ],
       },
       {
-        id: 'oversubscription-learner-patent-wo',
+        id: 'oversubscription-learner-patent',
         title: 'Oversubscription Reinforcement Learner',
-        venue: 'WO2024050824A1',
-        year: '2024',
-        category: 'Patent',
+        venue: 'WO2024050824A1; US Patent App. 18/993,509',
+        year: '2024-2026',
+        category: 'Patent and application',
         href: 'https://patents.google.com/patent/WO2024050824A1/en',
-        summary: 'Patent record covering reinforcement-learning techniques for cloud resource oversubscription.',
-        links: [{ label: 'Patent', href: 'https://patents.google.com/patent/WO2024050824A1/en' }],
+        summary:
+          'Patent record and related US application covering reinforcement-learning methods for cloud resource oversubscription.',
+        links: [
+          { label: 'Patent', href: 'https://patents.google.com/patent/WO2024050824A1/en' },
+          {
+            label: 'Application search',
+            href: 'https://patents.google.com/?q=%22Oversubscription+reinforcement+learner%22',
+          },
+        ],
       },
       {
         id: 'auto-scaling-spot-on-demand',
@@ -1060,6 +1044,14 @@ export const workAreas: WorkArea[] = [
     question:
       'How can embodied agents move, approach, and adapt in ways that respect human social structure?',
     keywords: ['social navigation', 'human-agent interaction', 'group behavior', 'mixed reality', 'robot adaptation'],
+    homepagePublicationIds: [
+      'science-robotics-intention',
+      'group-behavior-recognition',
+      'approach-behavior-dataset',
+      'trajectory-generation-perception',
+      'appgan',
+      'socially-appropriate-approach-rl',
+    ],
     publications: [
       {
         id: 'science-robotics-intention',
@@ -1335,6 +1327,19 @@ export const workAreas: WorkArea[] = [
     ],
   },
 ]
+
+const workAreaOrder = [
+  'code-intelligence',
+  'reasoning-rag',
+  'computer-use',
+  'model-learning',
+  'cloud-intelligence',
+  'embodied-agents',
+]
+
+export const workAreas = [...workAreasSource].sort(
+  (first, second) => workAreaOrder.indexOf(first.slug) - workAreaOrder.indexOf(second.slug),
+)
 
 export const selectedPublications = workAreas
   .flatMap((area) => area.publications.map((publication) => ({ ...publication, areaSlug: area.slug })))
