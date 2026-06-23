@@ -397,13 +397,13 @@ const workAreasSource: WorkArea[] = [
     shortTitle: 'LLM reasoning and RAG',
     eyebrow: 'Structured knowledge and applied LLMs',
     description:
-      'This work studies deep research, procedural RAG, multi-hop retrieval, recommendation, trustworthy generation, and LLM applications in real information workflows.',
+      'This work studies deep research, procedural RAG, multi-hop retrieval, trustworthy generation, and LLM applications in real information workflows.',
     homepageSummary:
-      'These papers study how LLMs organize evidence, decide when to retrieve or call tools, reason over structured environments, and support recommendation, QA, and multimodal evaluation tasks.',
+      'These papers study how LLMs organize evidence, decide when to retrieve or call tools, reason over structured environments, and support QA, trustworthy generation, and multimodal evaluation tasks.',
     question:
       'How can LLMs use structured knowledge, retrieval, and task context to reason more faithfully in real applications?',
-    keywords: ['deep research', 'RAG', 'recommendation', 'trustworthy LLMs', 'LLM applications'],
-    homepagePublicationIds: ['dualgraph', 'thread', 'efficientrag', 'duet', 'self-guard'],
+    keywords: ['deep research', 'RAG', 'procedural QA', 'trustworthy LLMs', 'LLM applications'],
+    homepagePublicationIds: ['dualgraph', 'thread', 'efficientrag', 'autorag-hp', 'self-guard'],
     publications: [
       {
         id: 'dualgraph',
@@ -422,65 +422,6 @@ const workAreasSource: WorkArea[] = [
         imageUrl: '/paper-images/dualgraph-overview.png',
         imageAlt: 'DualGraph framework overview',
         featured: true,
-      },
-      {
-        id: 'adnanny',
-        title: 'AdNanny: One Reasoning LLM for All Offline Ads Recommendation Tasks',
-        venue: 'arXiv',
-        year: '2026',
-        category: 'Ads recommendation',
-        href: 'https://arxiv.org/abs/2602.01563',
-        summary:
-          'Unifies offline ads recommendation workflows under a single reasoning LLM, covering task framing, data preparation, and evaluation-oriented decision support.',
-        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2602.01563' }],
-        imageUrl: '/paper-images/adnanny-pipeline.png',
-        imageAlt: 'AdNanny offline ads recommendation pipeline',
-      },
-      {
-        id: 'duet',
-        title: 'DUET: Joint Exploration of User-Item Profiles in Recommendation System',
-        venue: 'ACL',
-        year: '2026',
-        category: 'Recommendation',
-        href: 'https://arxiv.org/abs/2604.13801',
-        summary:
-          'Jointly explores user and item profiles so recommendation systems can improve personalization by modeling both sides of the interaction.',
-        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2604.13801' }],
-        imageUrl: '/paper-images/duet-overview.png',
-        imageAlt: 'DUET user-item profile exploration overview',
-      },
-      {
-        id: 'icl-bandit',
-        title: 'ICL-Bandit: Relevance Labeling in Advertisement Recommendation Systems via LLM',
-        venue: 'EMNLP',
-        year: '2025',
-        category: 'Ads recommendation',
-        href: 'https://aclanthology.org/2025.findings-emnlp.1273/',
-        summary:
-          'Uses in-context learning with a bandit-style selection strategy to improve relevance labeling for advertisement recommendation systems.',
-        links: [
-          { label: 'Paper', href: 'https://aclanthology.org/2025.findings-emnlp.1273/' },
-          { label: 'PDF', href: 'https://aclanthology.org/2025.findings-emnlp.1273.pdf' },
-        ],
-        imageUrl: '/paper-images/icl-bandit-framework.png',
-        imageAlt: 'ICL-Bandit advertisement relevance labeling framework',
-      },
-      {
-        id: 'lettingo',
-        title: 'Lettingo: Explore User Profile Generation for Recommendation System',
-        venue: 'KDD',
-        year: '2025',
-        category: 'Recommendation',
-        href: 'https://doi.org/10.1145/3711896.3737024',
-        summary:
-          'Explores user-profile generation as a way to improve recommendation systems, complementing DUET-style profile exploration from the user side.',
-        links: [
-          { label: 'Paper', href: 'https://doi.org/10.1145/3711896.3737024' },
-          { label: 'arXiv', href: 'https://arxiv.org/abs/2506.18309' },
-          { label: 'PDF', href: 'https://arxiv.org/pdf/2506.18309' },
-        ],
-        imageUrl: '/paper-images/lettingo-figure.png',
-        imageAlt: 'Lettingo user profile generation preview',
       },
       {
         id: 'genception',
@@ -637,6 +578,97 @@ const workAreasSource: WorkArea[] = [
     ],
   },
   {
+    slug: 'ads-recommendation',
+    title: 'Advertisement and Recommendation Intelligence',
+    shortTitle: 'Ads and recommendation',
+    eyebrow: 'Bing Ads and recommendation systems',
+    description:
+      'This work studies industrial ads and recommendation systems, including Bing Ads-style offline recommendation tasks, relevance labeling, user-item profile modeling, and query generation.',
+    homepageSummary:
+      'This thread gathers the advertisement and recommendation work: Bing Ads-style offline ads tasks, relevance labeling, user/item profile exploration, and query-generation optimization for retrieval and search systems.',
+    question:
+      'How can LLMs and reinforcement learning improve ads recommendation, relevance labeling, user profiling, and query generation?',
+    keywords: ['Bing Ads', 'ads recommendation', 'relevance labeling', 'user profiles', 'query generation'],
+    homepagePublicationIds: ['adnanny', 'duet', 'token-level-ppo', 'icl-bandit', 'lettingo'],
+    publications: [
+      {
+        id: 'adnanny',
+        title: 'AdNanny: One Reasoning LLM for All Offline Ads Recommendation Tasks',
+        venue: 'arXiv',
+        year: '2026',
+        category: 'Ads recommendation',
+        href: 'https://arxiv.org/abs/2602.01563',
+        summary:
+          'Unifies offline ads recommendation workflows, including Bing Ads-style task framing, data preparation, and evaluation-oriented decision support.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2602.01563' }],
+        imageUrl: '/paper-images/adnanny-pipeline.png',
+        imageAlt: 'AdNanny offline ads recommendation pipeline',
+      },
+      {
+        id: 'duet',
+        title: 'DUET: Joint Exploration of User-Item Profiles in Recommendation System',
+        venue: 'ACL',
+        year: '2026',
+        category: 'Recommendation',
+        href: 'https://arxiv.org/abs/2604.13801',
+        summary:
+          'Jointly explores user and item profiles so recommendation and ads systems can improve personalization by modeling both sides of the interaction.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2604.13801' }],
+        imageUrl: '/paper-images/duet-overview.png',
+        imageAlt: 'DUET user-item profile exploration overview',
+      },
+      {
+        id: 'token-level-ppo',
+        title: 'Token-Level Proximal Policy Optimization for Query Generation',
+        venue: 'EMNLP',
+        year: '2025',
+        category: 'Query generation',
+        href: 'https://aclanthology.org/2025.emnlp-main.1589/',
+        summary:
+          'Applies token-level policy optimization to query generation, giving search and ads systems finer-grained learning signals than sequence-level rewards.',
+        links: [
+          { label: 'Paper', href: 'https://aclanthology.org/2025.emnlp-main.1589/' },
+          { label: 'PDF', href: 'https://aclanthology.org/2025.emnlp-main.1589.pdf' },
+        ],
+        imageUrl: '/paper-images/token-level-ppo-framework.png',
+        imageAlt: 'Token-level PPO query generation training framework',
+      },
+      {
+        id: 'icl-bandit',
+        title: 'ICL-Bandit: Relevance Labeling in Advertisement Recommendation Systems via LLM',
+        venue: 'EMNLP',
+        year: '2025',
+        category: 'Ads recommendation',
+        href: 'https://aclanthology.org/2025.findings-emnlp.1273/',
+        summary:
+          'Uses in-context learning with a bandit-style selection strategy to improve relevance labeling for advertisement recommendation systems.',
+        links: [
+          { label: 'Paper', href: 'https://aclanthology.org/2025.findings-emnlp.1273/' },
+          { label: 'PDF', href: 'https://aclanthology.org/2025.findings-emnlp.1273.pdf' },
+        ],
+        imageUrl: '/paper-images/icl-bandit-framework.png',
+        imageAlt: 'ICL-Bandit advertisement relevance labeling framework',
+      },
+      {
+        id: 'lettingo',
+        title: 'Lettingo: Explore User Profile Generation for Recommendation System',
+        venue: 'KDD',
+        year: '2025',
+        category: 'Recommendation',
+        href: 'https://doi.org/10.1145/3711896.3737024',
+        summary:
+          'Explores user-profile generation as a way to improve recommendation systems, complementing DUET-style profile exploration from the user side.',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.1145/3711896.3737024' },
+          { label: 'arXiv', href: 'https://arxiv.org/abs/2506.18309' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2506.18309' },
+        ],
+        imageUrl: '/paper-images/lettingo-figure.png',
+        imageAlt: 'Lettingo user profile generation preview',
+      },
+    ],
+  },
+  {
     slug: 'model-learning',
     title: 'Model Learning, Training, and Alignment',
     shortTitle: 'Model learning and training',
@@ -648,7 +680,7 @@ const workAreasSource: WorkArea[] = [
     question:
       'How can model-training methods make LLMs and agents more reliable, capable, and aligned with task feedback?',
     keywords: ['reinforcement learning', 'reward learning', 'value learning', 'self-refinement', 'model training'],
-    homepagePublicationIds: ['dvpo', 'reprompt', 'learning-to-refine', 'self-evolved-reward-learning', 'token-level-ppo'],
+    homepagePublicationIds: ['dvpo', 'reprompt', 'learning-to-refine', 'self-evolved-reward-learning', 'adaptflow'],
     publications: [
       {
         id: 'reprompt',
@@ -698,22 +730,6 @@ const workAreasSource: WorkArea[] = [
         imageUrl: '/paper-images/self-refine-pipeline.png',
         imageAlt: 'Learning to Refine training pipeline',
         featured: true,
-      },
-      {
-        id: 'token-level-ppo',
-        title: 'Token-Level Proximal Policy Optimization for Query Generation',
-        venue: 'EMNLP',
-        year: '2025',
-        category: 'Policy optimization',
-        href: 'https://aclanthology.org/2025.emnlp-main.1589/',
-        summary:
-          'Applies token-level policy optimization to query generation, giving retrieval and search systems finer-grained learning signals than sequence-level rewards.',
-        links: [
-          { label: 'Paper', href: 'https://aclanthology.org/2025.emnlp-main.1589/' },
-          { label: 'PDF', href: 'https://aclanthology.org/2025.emnlp-main.1589.pdf' },
-        ],
-        imageUrl: '/paper-images/token-level-ppo-framework.png',
-        imageAlt: 'Token-level PPO query generation training framework',
       },
       {
         id: 'adaptflow',
@@ -1331,6 +1347,7 @@ const workAreasSource: WorkArea[] = [
 const workAreaOrder = [
   'code-intelligence',
   'reasoning-rag',
+  'ads-recommendation',
   'computer-use',
   'model-learning',
   'cloud-intelligence',

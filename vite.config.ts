@@ -5,6 +5,7 @@ const workPages = [
   'computer-use',
   'code-intelligence',
   'reasoning-rag',
+  'ads-recommendation',
   'model-learning',
   'cloud-intelligence',
   'embodied-agents',
