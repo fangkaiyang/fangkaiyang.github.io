@@ -224,7 +224,7 @@ const hydrateVisitorWidget = () => {
 }
 
 const renderHome = () => {
-  document.title = 'Fangkai Yang'
+  document.title = '杨方凯 Fangkai Yang | Microsoft Research'
 
   return `
     ${renderHeader()}
