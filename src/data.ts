@@ -30,6 +30,7 @@ export type WorkArea = {
   shortTitle: string
   eyebrow: string
   description: string
+  homepageSummary: string
   question: string
   keywords: string[]
   publications: Publication[]
@@ -113,10 +114,26 @@ export const workAreas: WorkArea[] = [
     eyebrow: 'Agents that operate software',
     description:
       'This line brings together desktop AgentOS work, GUI grounding, computer-use world models, API-first interaction, and reliability tools for multi-agent workflows.',
+    homepageSummary:
+      'My recent agent work studies how language models can operate real software: grounding visual interfaces, using native APIs, learning from simulated UI transitions, and debugging long multi-agent trajectories.',
     question:
       'How can agents understand interfaces, choose actions, and recover from failures while working inside real software systems?',
     keywords: ['desktop AgentOS', 'GUI grounding', 'API-first agents', 'world models', 'agent debugging'],
     publications: [
+      {
+        id: 'tree-seeker',
+        title: 'TreeSeeker: Tree-Structured Trial, Error, and Return in Deep Search',
+        venue: 'arXiv',
+        year: '2026',
+        category: 'Deep search agents',
+        href: 'https://arxiv.org/abs/2606.11662',
+        summary:
+          'Uses tree-structured trials and returns to help deep-search agents explore, diagnose errors, and recover across long problem-solving trajectories.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2606.11662' }],
+        imageUrl: '/paper-images/tree-seeker-overview.png',
+        imageAlt: 'TreeSeeker tree-structured deep search overview',
+        featured: true,
+      },
       {
         id: 'ufo2',
         title: 'UFO2: The Desktop AgentOS',
@@ -170,6 +187,19 @@ export const workAreas: WorkArea[] = [
         featured: true,
       },
       {
+        id: 'behavior-consistency',
+        title: 'Beyond State Consistency: Behavior Consistency in Text-Based World Models',
+        venue: 'arXiv',
+        year: '2026',
+        category: 'World models',
+        href: 'https://arxiv.org/abs/2604.13824',
+        summary:
+          'Argues that text-based world models should preserve behavior-level consequences, not only state descriptions, when agents plan in simulated environments.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2604.13824' }],
+        imageUrl: '/paper-images/behavior-consistency-overview.png',
+        imageAlt: 'Behavior consistency world model overview',
+      },
+      {
         id: 'computer-world-model',
         title: 'Computer-Using World Model',
         venue: 'arXiv',
@@ -179,6 +209,8 @@ export const workAreas: WorkArea[] = [
         summary:
           'Models visual UI transitions so a computer-using agent can imagine and evaluate candidate action outcomes before acting in the live environment.',
         links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2602.17365' }],
+        imageUrl: '/paper-images/computer-world-model-overview.png',
+        imageAlt: 'Computer-using world model overview',
       },
       {
         id: 'dover',
@@ -194,6 +226,8 @@ export const workAreas: WorkArea[] = [
           { label: 'Project', href: 'https://mbjinx.github.io/DoVer_Web/' },
           { label: 'Code', href: 'https://github.com/microsoft/ACV/tree/main/misc/DoVer' },
         ],
+        imageUrl: '/paper-images/dover-pipeline.png',
+        imageAlt: 'DoVer intervention-driven debugging pipeline',
         featured: true,
       },
       {
@@ -221,6 +255,8 @@ export const workAreas: WorkArea[] = [
         summary:
           'A survey-style synthesis of the transition from language-only models toward systems that generate, verify, and execute actions in digital environments.',
         links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2412.10047' }],
+        imageUrl: '/paper-images/large-action-models-pipeline.png',
+        imageAlt: 'Large action models pipeline overview',
       },
       {
         id: 'taskweaver',
@@ -245,6 +281,8 @@ export const workAreas: WorkArea[] = [
     eyebrow: 'From functions to repositories',
     description:
       'This program studies code models beyond isolated snippets: repository generation, project translation, executable representations, and training data generated through model competition.',
+    homepageSummary:
+      'This thread moves code intelligence from isolated functions to full repositories: generating microservices, representing project structure, translating codebases, and building executable supervision for code models.',
     question:
       'How can language models represent, generate, translate, and evaluate code at repository scale?',
     keywords: ['repository generation', 'code translation', 'executability', 'training data', 'benchmarks'],
@@ -280,6 +318,8 @@ export const workAreas: WorkArea[] = [
           { label: 'Paper', href: 'https://arxiv.org/abs/2602.02084' },
           { label: 'Code', href: 'https://github.com/microsoft/RPG-ZeroRepo/tree/main/zerorepo/rpg_encoder' },
         ],
+        imageUrl: '/paper-images/rpg-encoder-pipeline.png',
+        imageAlt: 'RPG-Encoder repository representation pipeline',
         featured: true,
       },
       {
@@ -331,6 +371,8 @@ export const workAreas: WorkArea[] = [
     eyebrow: 'Structured knowledge and self-improvement',
     description:
       'This work studies deep research, procedural RAG, multi-hop retrieval, self-refinement, value learning, recommendation, and trustworthy generation.',
+    homepageSummary:
+      'Across deep research, RAG, recommendation, and preference learning, these papers ask how models should organize evidence, decide when to retrieve or call tools, and improve from feedback.',
     question:
       'How can models organize knowledge, decide when to retrieve or call tools, and improve themselves from feedback?',
     keywords: ['deep research', 'RAG', 'self-refinement', 'RLHF', 'recommendation', 'trustworthy LLMs'],
@@ -352,6 +394,19 @@ export const workAreas: WorkArea[] = [
         imageUrl: '/paper-images/dualgraph-overview.png',
         imageAlt: 'DualGraph framework overview',
         featured: true,
+      },
+      {
+        id: 'adnanny',
+        title: 'AdNanny: One Reasoning LLM for All Offline Ads Recommendation Tasks',
+        venue: 'arXiv',
+        year: '2026',
+        category: 'Ads recommendation',
+        href: 'https://arxiv.org/abs/2602.01563',
+        summary:
+          'Unifies offline ads recommendation workflows under a single reasoning LLM, covering task framing, data preparation, and evaluation-oriented decision support.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2602.01563' }],
+        imageUrl: '/paper-images/adnanny-pipeline.png',
+        imageAlt: 'AdNanny offline ads recommendation pipeline',
       },
       {
         id: 'reprompt',
@@ -384,6 +439,8 @@ export const workAreas: WorkArea[] = [
           { label: 'Paper', href: 'https://arxiv.org/abs/2502.16944' },
           { label: 'Code', href: 'https://github.com/microsoft/DKI_LLM/tree/main/dvpo' },
         ],
+        imageUrl: '/paper-images/dvpo-method.png',
+        imageAlt: 'Decoupled value policy optimization method overview',
         featured: true,
       },
       {
@@ -411,6 +468,139 @@ export const workAreas: WorkArea[] = [
         links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2604.13801' }],
         imageUrl: '/paper-images/duet-overview.png',
         imageAlt: 'DUET user-item profile exploration overview',
+      },
+      {
+        id: 'icl-bandit',
+        title: 'ICL-Bandit: Relevance Labeling in Advertisement Recommendation Systems via LLM',
+        venue: 'EMNLP Findings',
+        year: '2025',
+        category: 'Ads recommendation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:HoB7MX3m0LUC',
+        summary:
+          'Uses in-context learning with a bandit-style selection strategy to improve relevance labeling for advertisement recommendation systems.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:HoB7MX3m0LUC',
+          },
+        ],
+      },
+      {
+        id: 'token-level-ppo',
+        title: 'Token-Level Proximal Policy Optimization for Query Generation',
+        venue: 'EMNLP',
+        year: '2025',
+        category: 'Query generation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:bEWYMUwI8FkC',
+        summary:
+          'Applies token-level policy optimization to query generation, giving retrieval and search systems finer-grained learning signals than sequence-level rewards.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:bEWYMUwI8FkC',
+          },
+        ],
+      },
+      {
+        id: 'adaptflow',
+        title: 'AdaptFlow: Adaptive Workflow Optimization via Meta-Learning',
+        venue: 'EMNLP Findings',
+        year: '2025',
+        category: 'Workflow optimization',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:SeFeTyx0c_EC',
+        summary:
+          'Uses meta-learning to adapt workflow choices across tasks, connecting agentic planning with workflow-level optimization.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:SeFeTyx0c_EC',
+          },
+        ],
+      },
+      {
+        id: 'lettingo',
+        title: 'Lettingo: Explore User Profile Generation for Recommendation System',
+        venue: 'KDD',
+        year: '2025',
+        category: 'Recommendation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:RGFaLdJalmkC',
+        summary:
+          'Explores user-profile generation as a way to improve recommendation systems, complementing DUET-style profile exploration from the user side.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:RGFaLdJalmkC',
+          },
+        ],
+      },
+      {
+        id: 'warriormath',
+        title: 'WarriorMath: Enhancing the Mathematical Ability of Large Language Models with a Defect-Aware Framework',
+        venue: 'arXiv',
+        year: '2025',
+        category: 'Mathematical reasoning',
+        href: 'https://arxiv.org/abs/2508.01245',
+        summary:
+          'Targets mathematical reasoning failures with defect-aware data and training procedures, turning error patterns into stronger supervision for LLMs.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2508.01245' }],
+        imageUrl: '/paper-images/warriormath-teaser.png',
+        imageAlt: 'WarriorMath defect-aware mathematical reasoning framework',
+      },
+      {
+        id: 'genception',
+        title: 'GenCeption: Evaluate Vision LLMs with Unlabeled Unimodal Data',
+        venue: 'Computer Speech & Language',
+        year: '2025',
+        category: 'Vision-language evaluation',
+        href: 'https://arxiv.org/abs/2402.14973',
+        summary:
+          'Evaluates multimodal LLMs without manually labeled multimodal data by deriving checks from unlabeled unimodal examples.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2402.14973' }],
+        imageUrl: '/paper-images/genception-overview.png',
+        imageAlt: 'GenCeption multimodal evaluation overview',
+      },
+      {
+        id: 'introducing-genception',
+        title: 'Introducing GenCeption for Multimodal LLM Benchmarking: You May Bypass Annotations',
+        venue: 'TrustNLP Workshop',
+        year: '2024',
+        category: 'Vision-language evaluation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:hFOr9nPyWt4C',
+        summary:
+          'Workshop version introducing GenCeption as an annotation-light approach to multimodal LLM benchmarking.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:hFOr9nPyWt4C',
+          },
+        ],
+      },
+      {
+        id: 'self-evolved-reward-learning',
+        title: 'Self-Evolved Reward Learning for LLMs',
+        venue: 'ICLR',
+        year: '2025',
+        category: 'Reward learning',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:iH-uZ7U-co4C',
+        summary:
+          'Studies how LLMs can improve their reward-learning signals through self-evolution, reducing dependence on static external supervision.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:iH-uZ7U-co4C',
+          },
+        ],
+      },
+      {
+        id: 'ai-delegates',
+        title: 'AI Delegates with a Dual Focus: Ensuring Privacy and Strategic Self-Disclosure',
+        venue: 'arXiv',
+        year: '2024',
+        category: 'AI delegation',
+        href: 'https://arxiv.org/abs/2409.17642',
+        summary:
+          'Studies delegated AI agents that must balance privacy protection with strategic self-disclosure in interaction settings.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2409.17642' }],
       },
       {
         id: 'thread',
@@ -442,6 +632,22 @@ export const workAreas: WorkArea[] = [
         ],
       },
       {
+        id: 'autorag-hp',
+        title: 'AutoRAG-HP: Automatic Online Hyper-Parameter Tuning for Retrieval-Augmented Generation',
+        venue: 'EMNLP Findings',
+        year: '2024',
+        category: 'RAG optimization',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:TFP_iSt0sucC',
+        summary:
+          'Automatically tunes online RAG hyperparameters so retrieval behavior can adapt to the task and data distribution without manual search.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:TFP_iSt0sucC',
+          },
+        ],
+      },
+      {
         id: 'self-guard',
         title: 'SELF-GUARD: Empower the LLM to Safeguard Itself',
         venue: 'NAACL-HLT',
@@ -469,6 +675,33 @@ export const workAreas: WorkArea[] = [
           { label: 'PDF', href: 'https://aclanthology.org/2024.findings-acl.254.pdf' },
         ],
       },
+      {
+        id: 'industrial-qa',
+        title: 'Empower Large Language Model to Perform Better on Industrial Domain-Specific Question Answering',
+        venue: 'EMNLP',
+        year: '2023',
+        category: 'Domain QA',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:M3ejUd6NZC8C',
+        summary:
+          'Adapts LLM question answering to industrial domains, emphasizing task-specific knowledge and practical answer quality.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:M3ejUd6NZC8C',
+          },
+        ],
+      },
+      {
+        id: 'introspective-tips',
+        title: 'Introspective Tips: Large Language Model for In-Context Decision Making',
+        venue: 'arXiv',
+        year: '2023',
+        category: 'In-context decision making',
+        href: 'https://arxiv.org/abs/2305.11598',
+        summary:
+          'Uses introspective guidance to improve in-context decision making, helping language models reason over choices with lightweight self-feedback.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2305.11598' }],
+      },
     ],
   },
   {
@@ -478,10 +711,60 @@ export const workAreas: WorkArea[] = [
     eyebrow: 'Learning for production systems',
     description:
       'This work develops learning-based automation for cloud reliability, safe resource oversubscription, storage management, incident mitigation, and operational decision support.',
+    homepageSummary:
+      'This systems line brings learning into production cloud operations: safe oversubscription, incident mitigation, storage optimization, scheduling, and failure prediction under operational risk.',
     question:
       'How can large-scale services use data and learning to make operational decisions safely under uncertainty?',
     keywords: ['Microsoft 365', 'resource oversubscription', 'failure mitigation', 'cloud storage', 'temporal prediction'],
     publications: [
+      {
+        id: 'dynamic-vm-adjustment-patent-application',
+        title: 'System and Method of Dynamically Adjusting Virtual Machines for a Workload',
+        venue: 'US Patent App. 19/316,549',
+        year: '2026',
+        category: 'Patent application',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:cFHS6HbyZ2cC',
+        summary:
+          'Patent application on dynamically adjusting virtual machines for workload needs in cloud environments.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:cFHS6HbyZ2cC',
+          },
+        ],
+      },
+      {
+        id: 'oversubscription-learner-patent-application',
+        title: 'Oversubscription Reinforcement Learner',
+        venue: 'US Patent App. 18/993,509',
+        year: '2026',
+        category: 'Patent application',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:M05iB0D1s5AC',
+        summary:
+          'Patent application covering reinforcement-learning methods for cloud resource oversubscription.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:M05iB0D1s5AC',
+          },
+        ],
+      },
+      {
+        id: 'dynamic-vm-adjustment-patent',
+        title: 'System and Method of Dynamically Adjusting Virtual Machines for a Workload',
+        venue: 'US Patent 12,423,160',
+        year: '2025',
+        category: 'Patent',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:QIV2ME_5wuYC',
+        summary:
+          'Issued patent on dynamically adjusting virtual machines for a workload.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:QIV2ME_5wuYC',
+          },
+        ],
+      },
       {
         id: 'protorail',
         title: 'ProtoRAIL: A Risk-Cognizant Imitation Agent for Adaptive vCPU Oversubscription In the Cloud',
@@ -492,6 +775,8 @@ export const workAreas: WorkArea[] = [
         summary:
           'A risk-aware imitation-learning agent for adaptive vCPU oversubscription, designed around operational constraints in cloud resource management.',
         links: [{ label: 'Paper', href: 'https://openreview.net/forum?id=Dt8s7CIsEu' }],
+        imageUrl: '/paper-images/protorail-overview.png',
+        imageAlt: 'ProtoRAIL adaptive vCPU oversubscription overview',
         featured: true,
       },
       {
@@ -504,6 +789,19 @@ export const workAreas: WorkArea[] = [
         summary:
           'Explores self-learning agents for microservice management, framing cloud operations as an adaptive decision-making problem.',
         links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2501.19056' }],
+      },
+      {
+        id: 'autonomic-computing-vision',
+        title: 'The Vision of Autonomic Computing: Can LLMs Make It a Reality?',
+        venue: 'arXiv',
+        year: '2024',
+        category: 'Autonomic computing',
+        href: 'https://arxiv.org/abs/2407.14402',
+        summary:
+          'Frames how LLM agents could support self-configuring, self-healing, self-optimizing, and self-protecting cloud systems.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2407.14402' }],
+        imageUrl: '/paper-images/autonomic-vision-architecture.png',
+        imageAlt: 'Autonomic computing vision architecture',
       },
       {
         id: 'te-pid',
@@ -526,6 +824,65 @@ export const workAreas: WorkArea[] = [
         summary:
           'Uses chance-constrained imitation learning so cloud resource oversubscription can adapt under uncertainty while bounding operational risk.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3627673.3680060' }],
+      },
+      {
+        id: 'advanced-rl-scheduling',
+        title: 'An Advanced Reinforcement Learning Framework for Online Scheduling of Deferrable Workloads in Cloud Computing',
+        venue: 'arXiv',
+        year: '2024',
+        category: 'Cloud scheduling',
+        href: 'https://arxiv.org/abs/2406.01047',
+        summary:
+          'Applies reinforcement learning to online scheduling decisions for deferrable cloud workloads, balancing efficiency and service constraints.',
+        links: [{ label: 'Paper', href: 'https://arxiv.org/abs/2406.01047' }],
+      },
+      {
+        id: 'oversubscription-learner-patent-wo',
+        title: 'Oversubscription Reinforcement Learner',
+        venue: 'US Patent WO2024050824A1',
+        year: '2024',
+        category: 'Patent',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:j3f4tGmQtD8C',
+        summary:
+          'Patent record covering reinforcement-learning techniques for cloud resource oversubscription.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:j3f4tGmQtD8C',
+          },
+        ],
+      },
+      {
+        id: 'nissist',
+        title: 'Nissist: An Incident Mitigation Copilot Based on Troubleshooting Guides',
+        venue: 'ECAI',
+        year: '2024',
+        category: 'Incident mitigation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:ZeXyd9-uunAC',
+        summary:
+          'Builds an incident-mitigation copilot around troubleshooting guides, connecting operational knowledge with guided remediation steps.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:ZeXyd9-uunAC',
+          },
+        ],
+      },
+      {
+        id: 'soil',
+        title: 'SOIL: Score Conditioned Diffusion Model for Imbalanced Cloud Failure Prediction',
+        venue: 'WWW Companion',
+        year: '2024',
+        category: 'Cloud failure prediction',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:qUcmZB5y_30C',
+        summary:
+          'Uses score-conditioned diffusion modeling to improve failure prediction when cloud telemetry is highly imbalanced.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:qUcmZB5y_30C',
+          },
+        ],
       },
       {
         id: 'diffusion-failure-prediction',
@@ -571,6 +928,70 @@ export const workAreas: WorkArea[] = [
           'A production-oriented system for reallocating containers in large cloud services to improve operational efficiency and reliability.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3468264.3473936' }],
       },
+      {
+        id: 'cooperative-oversubscription',
+        title: 'Learning Cooperative Oversubscription for Cloud by Chance-Constrained Multi-Agent Reinforcement Learning',
+        venue: 'WWW',
+        year: '2023',
+        category: 'Cloud resource management',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:ULOm3_A8WrAC',
+        summary:
+          'Learns cooperative oversubscription policies for cloud resources with chance constraints that account for reliability risk.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:ULOm3_A8WrAC',
+          },
+        ],
+      },
+      {
+        id: 'snape',
+        title: 'SNAPE: Reliable and Low-Cost Computing with Mixture of Spot and On-Demand VMs',
+        venue: 'ASPLOS',
+        year: '2023',
+        category: 'Spot and on-demand VMs',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:YOwf2qJgpHMC',
+        summary:
+          'Combines spot and on-demand virtual machines to reduce cost while preserving reliability for cloud workloads.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:YOwf2qJgpHMC',
+          },
+        ],
+      },
+      {
+        id: 'spot-vm-eviction',
+        title: 'Spot Virtual Machine Eviction Prediction in Microsoft Cloud',
+        venue: 'WWW Companion',
+        year: '2022',
+        category: 'Spot VM prediction',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:3fE2CSJIrl8C',
+        summary:
+          'Predicts spot VM evictions in Microsoft Cloud, supporting safer use of cheaper but interruptible compute capacity.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:3fE2CSJIrl8C',
+          },
+        ],
+      },
+      {
+        id: 'auto-scaling-spot-on-demand',
+        title: 'Auto-Scaling for Spot and On-Demand VM Mixture',
+        venue: 'Scholar record',
+        year: 'In progress',
+        category: 'Spot and on-demand VMs',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:kNdYIx-mwKoC',
+        summary:
+          'Scholar-listed work on autoscaling mixtures of spot and on-demand VMs for cloud workloads.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:kNdYIx-mwKoC',
+          },
+        ],
+      },
     ],
   },
   {
@@ -580,6 +1001,8 @@ export const workAreas: WorkArea[] = [
     eyebrow: 'Agents in social space',
     description:
       'This earlier ESAL-centered work studies how robots and virtual agents approach people, navigate groups, interpret social behavior, and adapt across embodiments.',
+    homepageSummary:
+      'My PhD and ESAL-era work focused on agents in shared physical and virtual spaces: robot approach behavior, social distance, crowd/group perception, and mixed-reality human-agent interaction.',
     question:
       'How can embodied agents move, approach, and adapt in ways that respect human social structure?',
     keywords: ['social navigation', 'human-agent interaction', 'group behavior', 'mixed reality', 'robot adaptation'],
@@ -620,14 +1043,67 @@ export const workAreas: WorkArea[] = [
       },
       {
         id: 'multiparty-interaction',
-        title: 'Multiparty Interaction Between Agents and Humans in Immersive Virtual Reality',
-        venue: 'IVA',
-        year: '2021',
+        title: 'Multiparty Interaction Between Humans and Socially Interactive Agents',
+        venue: 'Handbook on Socially Interactive Agents',
+        year: '2022',
         category: 'Virtual agents',
-        href: 'https://dl.acm.org/doi/10.1145/3472306.3478341',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:Zph67rFs4hoC',
         summary:
-          'Studies how people and virtual agents interact in multiparty immersive settings, connecting embodiment, space, and group dynamics.',
-        links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.1145/3472306.3478341' }],
+          'Surveys and organizes multiparty interaction between people and socially interactive agents, connecting embodiment, turn-taking, and group dynamics.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:Zph67rFs4hoC',
+          },
+        ],
+      },
+      {
+        id: 'approach-behavior-dataset',
+        title: 'A Dataset of Human and Robot Approach Behaviors into Small Free-Standing Conversational Groups',
+        venue: 'PLOS ONE',
+        year: '2021',
+        category: 'Social navigation dataset',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:5nxA0vEk-isC',
+        summary:
+          'Releases human and robot approach-behavior data for small conversational groups, supporting learning-based social navigation research.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:5nxA0vEk-isC',
+          },
+        ],
+      },
+      {
+        id: 'phd-thesis',
+        title: 'Simulating Group Interactions Through Machine Learning and Human Perception',
+        venue: 'KTH Royal Institute of Technology',
+        year: '2020',
+        category: 'PhD thesis',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:hqOjcs7Dif8C',
+        summary:
+          'PhD thesis on simulating group interactions through machine learning and human perception, tying together crowd perception and agent approach behavior.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:hqOjcs7Dif8C',
+          },
+        ],
+      },
+      {
+        id: 'trajectory-generation-perception',
+        title: 'Impact of Trajectory Generation Methods on Viewer Perception of Robot Approaching Group Behaviors',
+        venue: 'RO-MAN',
+        year: '2020',
+        category: 'Robot approach behavior',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:UebtZRa9Y70C',
+        summary:
+          'Compares how trajectory generation methods change viewer perception of robot approaches toward small groups.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:UebtZRa9Y70C',
+          },
+        ],
       },
       {
         id: 'group-behavior-recognition',
@@ -652,6 +1128,22 @@ export const workAreas: WorkArea[] = [
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/RO-MAN46459.2019.8956425' }],
       },
       {
+        id: 'socially-appropriate-approach-rl',
+        title: 'Learning Socially Appropriate Robot Approaching Behavior Toward Groups Using Deep Reinforcement Learning',
+        venue: 'RO-MAN',
+        year: '2019',
+        category: 'Social approach behavior',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:WF5omc3nYNoC',
+        summary:
+          'Learns robot approach behavior toward human groups using deep reinforcement learning, with social acceptability as a central criterion.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:WF5omc3nYNoC',
+          },
+        ],
+      },
+      {
         id: 'app-lstm',
         title: 'App-LSTM: Data-Driven Generation of Socially Acceptable Trajectories for Approaching Small Groups of Agents',
         venue: 'HAI',
@@ -674,6 +1166,38 @@ export const workAreas: WorkArea[] = [
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/VS-Games.2019.8864512' }],
       },
       {
+        id: 'criticality-collision-avoidance',
+        title: 'Criticality-Based Collision Avoidance Prioritization for Crowd Navigation',
+        venue: 'HAI',
+        year: '2019',
+        category: 'Crowd navigation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:roLk4NBRz8UC',
+        summary:
+          'Prioritizes collision avoidance decisions in crowds based on criticality, supporting safer local navigation choices.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:roLk4NBRz8UC',
+          },
+        ],
+      },
+      {
+        id: 'priority-local-optimization',
+        title: 'Priority Driven Local Optimization for Crowd Simulation',
+        venue: 'AAMAS',
+        year: '2019',
+        category: 'Crowd simulation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:eQOLeE2rZwMC',
+        summary:
+          'Uses priority-driven local optimization to improve crowd simulation behavior in interaction-heavy scenarios.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:eQOLeE2rZwMC',
+          },
+        ],
+      },
+      {
         id: 'group-joining-vr',
         title: 'Effect of Group Size on User Perception of Embodied Conversational Agents While Joining a Group in Immersive Virtual Reality',
         venue: 'IVA',
@@ -683,6 +1207,182 @@ export const workAreas: WorkArea[] = [
         summary:
           'Examines how group size changes human perception of embodied conversational agents joining groups in immersive virtual reality.',
         links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.1145/3308532.3329421' }],
+      },
+      {
+        id: 'mixed-reality-social-distance',
+        title: 'Investigating Social Distances Between Humans, Virtual Humans and Virtual Robots in Mixed Reality',
+        venue: 'AAMAS',
+        year: '2018',
+        category: 'Mixed reality interaction',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:IjCSPb-OGe4C',
+        summary:
+          'Studies social distance judgments among humans, virtual humans, and virtual robots in mixed reality.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:IjCSPb-OGe4C',
+          },
+        ],
+      },
+      {
+        id: 'posture-embodiment-social-distance',
+        title: 'Effects of Posture and Embodiment on Social Distance in Human-Agent Interaction in Mixed Reality',
+        venue: 'IVA',
+        year: '2018',
+        category: 'Mixed reality interaction',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:zYLM7Y9cAGgC',
+        summary:
+          'Examines how posture and embodiment influence social distance in human-agent mixed-reality interaction.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:zYLM7Y9cAGgC',
+          },
+        ],
+      },
+      {
+        id: 'crowd-density-group-perception',
+        title: 'Do You See Groups? The Impact of Crowd Density and Viewpoint on the Perception of Groups',
+        venue: 'IVA',
+        year: '2018',
+        category: 'Group perception',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:9yKSN-GCB0IC',
+        summary:
+          'Studies how crowd density and viewpoint affect whether observers perceive people as social groups.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:9yKSN-GCB0IC',
+          },
+        ],
+      },
+      {
+        id: 'neighbor-perception-model',
+        title: 'Who Are My Neighbors? A Perception Model for Selecting Neighbors of Pedestrians in Crowds',
+        venue: 'IVA',
+        year: '2018',
+        category: 'Crowd perception',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:d1gkVwhDpl0C',
+        summary:
+          'Models which neighbors pedestrians attend to in crowds, informing simulation and navigation behavior.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:d1gkVwhDpl0C',
+          },
+        ],
+      },
+      {
+        id: 'pedestrian-simulation-morl',
+        title: 'Pedestrian Simulation as Multi-Objective Reinforcement Learning',
+        venue: 'IVA',
+        year: '2018',
+        category: 'Crowd simulation',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:u-x6o8ySG0sC',
+        summary:
+          'Frames pedestrian simulation as a multi-objective reinforcement-learning problem balancing multiple behavioral constraints.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:u-x6o8ySG0sC',
+          },
+        ],
+      },
+      {
+        id: 'mixed-reality-hri-design',
+        title: 'Towards the Use of Mixed Reality for HRI Design via Virtual Robots',
+        venue: 'VAM-HRI Workshop',
+        year: '2018',
+        category: 'Mixed reality HRI',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:W7OEmFMy1HYC',
+        summary:
+          'Explores mixed reality and virtual robots as a design method for human-robot interaction research.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:W7OEmFMy1HYC',
+          },
+        ],
+      },
+      {
+        id: 'expressive-virtual-characters',
+        title: 'Expressive Virtual Characters for Social Demonstration Games',
+        venue: 'VS-GAMES',
+        year: '2017',
+        category: 'Virtual characters',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:Y0pCki6q_DkC',
+        summary:
+          'Develops expressive virtual characters for social demonstration games, an early line connecting virtual agents and interactive learning.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:Y0pCki6q_DkC',
+          },
+        ],
+      },
+      {
+        id: 'virtual-poster-presenter',
+        title: 'A Virtual Poster Presenter Using Mixed Reality',
+        venue: 'IVA',
+        year: '2017',
+        category: 'Mixed reality agents',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:UeHWp8X0CEIC',
+        summary:
+          'Demonstrates a mixed-reality virtual poster presenter, exploring situated presentation and interaction with virtual agents.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:UeHWp8X0CEIC',
+          },
+        ],
+      },
+      {
+        id: 'd4-8-expressive-virtual-characters',
+        title: 'D4.8 2nd Expressive Virtual Characters',
+        venue: 'Project deliverable',
+        year: '2017',
+        category: 'Virtual characters',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:qjMakFHDy7sC',
+        summary:
+          'Scholar-listed project deliverable on expressive virtual characters, connected to early virtual-agent demonstration work.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:qjMakFHDy7sC',
+          },
+        ],
+      },
+      {
+        id: 'd4-7-expressive-virtual-characters',
+        title: 'D4.7 1st Expressive Virtual Characters',
+        venue: 'Project deliverable',
+        year: '2016',
+        category: 'Virtual characters',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:2osOgNQ5qMEC',
+        summary:
+          'Scholar-listed project deliverable on expressive virtual characters from the early ESAL virtual-agent line.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:2osOgNQ5qMEC',
+          },
+        ],
+      },
+      {
+        id: 'collision-detection-displacement-surfaces',
+        title: 'Collision Detection Between Dynamic Rigid Objects and Static Displacement Mapped Surfaces in Computer Games',
+        venue: 'Scholar record',
+        year: '2015',
+        category: 'Computer graphics',
+        href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:YsMSGLbcyi4C',
+        summary:
+          'Early Scholar-listed work on collision detection between dynamic rigid objects and displacement-mapped surfaces in games.',
+        links: [
+          {
+            label: 'Scholar',
+            href: 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user=g4MrE6QAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=g4MrE6QAAAAJ:YsMSGLbcyi4C',
+          },
+        ],
       },
     ],
   },

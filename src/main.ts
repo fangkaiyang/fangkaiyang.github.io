@@ -3,8 +3,6 @@ import {
   biographyParagraphs,
   newsItems,
   profileLinks,
-  quickFacts,
-  selectedPublications,
   workAreas,
   type ProfileLink,
   type Publication,
@@ -49,7 +47,7 @@ const renderHeader = () => `
     <a class="brand" href="/" aria-label="Fangkai Yang homepage">Fangkai Yang</a>
     <nav aria-label="Primary navigation">
       <a href="/#research">Research</a>
-      <a href="/#selected">Selected</a>
+      <a href="/#publications">Publications</a>
       <a href="/#news">News</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -90,8 +88,8 @@ const renderPublicationLinks = (publication: Publication, areaSlug?: string) => 
   `
 }
 
-const renderPublication = (publication: Publication, areaSlug?: string, isFeatured = false) => `
-  <article class="publication-card${isFeatured ? ' featured-card' : ''}">
+const renderPublication = (publication: Publication, areaSlug?: string, isCompact = false) => `
+  <article class="publication-card${isCompact ? ' compact-publication' : ''}">
     ${renderPublicationVisual(publication)}
     <div class="publication-body">
       <div class="publication-meta">
@@ -106,40 +104,30 @@ const renderPublication = (publication: Publication, areaSlug?: string, isFeatur
   </article>
 `
 
-const renderWorkAreaCard = (area: WorkArea) => {
-  const featured = area.publications.find((publication) => publication.featured) ?? area.publications[0]
+const getHomepagePublications = (area: WorkArea) => {
+  const featured = area.publications.filter((publication) => publication.featured)
+  const candidates = featured.length >= 2 ? featured : area.publications.slice(0, 3)
 
-  return `
-    <article class="work-card">
-      <div class="work-card-visual">
-        ${renderPublicationVisual(featured)}
-      </div>
-      <div class="work-card-body">
-        <p class="card-kicker">${escapeHtml(area.eyebrow)}</p>
-        <h3>${escapeHtml(area.title)}</h3>
-        <p>${escapeHtml(area.description)}</p>
-        <ul class="keyword-list">
-          ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
-        </ul>
-        <a class="area-link" href="${workHref(area.slug)}">View ${escapeHtml(area.shortTitle)}</a>
-      </div>
-    </article>
-  `
+  return candidates.slice(0, 4)
 }
 
-const renderQuickFacts = () => `
-  <dl>
-    ${quickFacts
-      .map(
-        (fact) => `
-          <div>
-            <dt>${escapeHtml(fact.label)}</dt>
-            <dd>${escapeHtml(fact.value)}</dd>
-          </div>
-        `,
-      )
-      .join('')}
-  </dl>
+const renderHomeAreaSection = (area: WorkArea) => `
+  <article class="area-section" id="${escapeHtml(area.slug)}">
+    <div class="area-intro">
+      <p class="section-kicker">${escapeHtml(area.eyebrow)}</p>
+      <h3>${escapeHtml(area.title)}</h3>
+      <p>${escapeHtml(area.homepageSummary)}</p>
+      <ul class="keyword-list">
+        ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
+      </ul>
+      <a class="area-link" href="${workHref(area.slug)}">See more in ${escapeHtml(area.shortTitle)}</a>
+    </div>
+    <div class="area-publications">
+      ${getHomepagePublications(area)
+        .map((publication) => renderPublication(publication, area.slug, true))
+        .join('')}
+    </div>
+  </article>
 `
 
 const renderHome = () => {
@@ -149,6 +137,15 @@ const renderHome = () => {
     ${renderHeader()}
     <main id="top">
       <section class="hero-section" aria-labelledby="hero-title">
+        <div class="portrait-column">
+          <img
+            class="portrait"
+            src="/profile.jpg"
+            alt="Fangkai Yang"
+            width="220"
+            height="220"
+          />
+        </div>
         <div class="hero-copy">
           <p class="eyebrow">Microsoft Research Asia / Data, Knowledge, and Intelligence</p>
           <h1 id="hero-title">Fangkai Yang</h1>
@@ -160,16 +157,6 @@ const renderHome = () => {
             ${profileLinks.map((link) => renderExternalLink(link)).join('')}
           </div>
         </div>
-        <aside class="profile-panel" aria-label="Profile summary">
-          <img
-            class="portrait"
-            src="/profile.jpg"
-            alt="Fangkai Yang"
-            width="240"
-            height="240"
-          />
-          ${renderQuickFacts()}
-        </aside>
       </section>
 
       <section class="section split-section" aria-labelledby="about-title">
@@ -184,30 +171,15 @@ const renderHome = () => {
 
       <section id="research" class="section" aria-labelledby="research-title">
         <div class="section-heading">
-          <p class="section-kicker">Research Programs</p>
-          <h2 id="research-title">Organized by the problems the papers are trying to solve</h2>
+          <p class="section-kicker">Research Areas</p>
+          <h2 id="research-title">Selected papers by category</h2>
           <p>
-            The homepage keeps only selected work visible. Full publication lists are grouped into research-program pages
-            so GUI agents, GUI grounding, code intelligence, RAG, cloud systems, and robotics are easier to browse.
+            Each section gives the short version of a research direction and highlights a few representative papers.
+            The linked subpages keep the fuller Google Scholar-derived publication lists.
           </p>
         </div>
-        <div class="work-grid">
-          ${workAreas.map((area) => renderWorkAreaCard(area)).join('')}
-        </div>
-      </section>
-
-      <section id="selected" class="section" aria-labelledby="selected-title">
-        <div class="section-heading compact-heading">
-          <p class="section-kicker">Selected Publications</p>
-          <h2 id="selected-title">Top conference and journal papers</h2>
-          <p>
-            A compact entry point to recent papers; each card links to the paper and its research-program page.
-          </p>
-        </div>
-        <div class="featured-grid">
-          ${selectedPublications
-            .map((publication) => renderPublication(publication, publication.areaSlug, true))
-            .join('')}
+        <div id="publications" class="area-section-list">
+          ${workAreas.map((area) => renderHomeAreaSection(area)).join('')}
         </div>
       </section>
 

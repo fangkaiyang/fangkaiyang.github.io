@@ -19,7 +19,7 @@ The site is prepared for GitHub Pages through `.github/workflows/deploy.yml`. Th
 
 ## Publication Data
 
-Publication entries live in `src/data.ts`. The homepage shows selected publications, while the full lists are served from static research-program pages under `work/<slug>/`:
+Publication entries live in `src/data.ts`. The homepage is organized as research-category sections with short summaries and selected representative papers, while the fuller Google Scholar-derived lists are served from static research-program pages under `work/<slug>/`:
 
 - Computer-using agents and GUI intelligence
 - Repository and code intelligence
@@ -28,4 +28,4 @@ Publication entries live in `src/data.ts`. The homepage shows selected publicati
 - Human-aware robotics and embodied agents
 
 Each publication supports an optional `imageUrl` and `imageAlt` field for paper teaser images.
-Use Google Scholar, ORCID, user-confirmed facts, and primary paper/project pages as identity and publication anchors; avoid importing from merged same-name records without manual verification. Raw downloaded PDFs or TeX sources should stay in the ignored `paper-artifacts/` folder.
+Use Google Scholar, ORCID, user-confirmed facts, and primary paper/project pages as identity and publication anchors; avoid importing from merged same-name records without manual verification. Duplicate preprint/conference title variants can be represented by the canonical publication entry. Raw downloaded PDFs or TeX sources should stay in the ignored `paper-artifacts/` folder.
