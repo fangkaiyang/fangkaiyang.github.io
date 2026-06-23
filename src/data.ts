@@ -474,8 +474,12 @@ export const workAreas: WorkArea[] = [
         href: 'https://doi.org/10.1145/3711896.3737024',
         summary:
           'Explores user-profile generation as a way to improve recommendation systems, complementing DUET-style profile exploration from the user side.',
-        links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3711896.3737024' }],
-        imageUrl: '/paper-images/lettingo-preview.png',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.1145/3711896.3737024' },
+          { label: 'arXiv', href: 'https://arxiv.org/abs/2506.18309' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2506.18309' },
+        ],
+        imageUrl: '/paper-images/lettingo-figure.png',
         imageAlt: 'Lettingo user profile generation preview',
       },
       {
@@ -888,7 +892,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Optimizes cloud storage erasure-coding behavior through adaptive temperature management for production storage workloads.',
         links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.1145/3696630.3728537' }],
-        imageUrl: '/paper-images/te-pid-preview.png',
+        imageUrl: '/paper-images/te-pid-figure.png',
         imageAlt: 'Te-PID cloud storage preview',
       },
       {
@@ -901,7 +905,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Uses chance-constrained imitation learning so cloud resource oversubscription can adapt under uncertainty while bounding operational risk.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3627673.3680060' }],
-        imageUrl: '/paper-images/coin-preview.png',
+        imageUrl: '/paper-images/coin-figure.png',
         imageAlt: 'COIN safe resource allocation preview',
       },
       {
@@ -926,8 +930,12 @@ export const workAreas: WorkArea[] = [
         href: 'https://doi.org/10.3233/FAIA241032',
         summary:
           'Builds an incident-mitigation copilot around troubleshooting guides, connecting operational knowledge with guided remediation steps.',
-        links: [{ label: 'Paper', href: 'https://doi.org/10.3233/FAIA241032' }],
-        imageUrl: '/paper-images/nissist-preview.png',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.3233/FAIA241032' },
+          { label: 'arXiv', href: 'https://arxiv.org/abs/2402.17531' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2402.17531' },
+        ],
+        imageUrl: '/paper-images/nissist-figure.png',
         imageAlt: 'Nissist incident mitigation copilot preview',
       },
       {
@@ -940,7 +948,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Uses score-conditioned diffusion modeling to improve failure prediction when cloud telemetry is highly imbalanced.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3589335.3648303' }],
-        imageUrl: '/paper-images/soil-preview.png',
+        imageUrl: '/paper-images/soil-figure.png',
         imageAlt: 'SOIL cloud failure prediction preview',
       },
       {
@@ -952,8 +960,12 @@ export const workAreas: WorkArea[] = [
         href: 'https://doi.org/10.1145/3611643.3613866',
         summary:
           'Applies diffusion-based imputation to incomplete telemetry so failure prediction models can operate more reliably in Microsoft 365 settings.',
-        links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3611643.3613866' }],
-        imageUrl: '/paper-images/diffusion-failure-prediction-preview.png',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.1145/3611643.3613866' },
+          { label: 'arXiv', href: 'https://arxiv.org/abs/2309.02564' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/2309.02564' },
+        ],
+        imageUrl: '/paper-images/diffusion-failure-prediction-figure.png',
         imageAlt: 'Diffusion-based failure prediction preview',
       },
       {
@@ -966,7 +978,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Models physical decommissioning events with contextual temporal point processes for cloud asset lifecycle planning.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3580305.3599794' }],
-        imageUrl: '/paper-images/decommissioning-prediction-preview.png',
+        imageUrl: '/paper-images/decommissioning-prediction-figure.png',
         imageAlt: 'Decommissioning prediction preview',
       },
       {
@@ -979,7 +991,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'A cascade reinforcement-learning approach for mitigating failures while accounting for operational cost in Microsoft 365.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3534678.3539127' }],
-        imageUrl: '/paper-images/nenya-preview.png',
+        imageUrl: '/paper-images/nenya-figure.png',
         imageAlt: 'NENYA failure mitigation preview',
       },
       {
@@ -992,7 +1004,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'A production-oriented system for reallocating containers in large cloud services to improve operational efficiency and reliability.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3468264.3473936' }],
-        imageUrl: '/paper-images/container-reallocation-preview.png',
+        imageUrl: '/paper-images/container-reallocation-figure.png',
         imageAlt: 'Intelligent container reallocation preview',
       },
       {
@@ -1005,7 +1017,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Learns cooperative oversubscription policies for cloud resources with chance constraints that account for reliability risk.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3543507.3583298' }],
-        imageUrl: '/paper-images/cooperative-oversubscription-preview.png',
+        imageUrl: '/paper-images/cooperative-oversubscription-figure.png',
         imageAlt: 'Cooperative oversubscription preview',
       },
       {
@@ -1018,7 +1030,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Combines spot and on-demand virtual machines to reduce cost while preserving reliability for cloud workloads.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3582016.3582028' }],
-        imageUrl: '/paper-images/snape-preview.png',
+        imageUrl: '/paper-images/snape-figure.png',
         imageAlt: 'SNAPE spot and on-demand VM preview',
       },
       {
@@ -1031,7 +1043,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Predicts spot VM evictions in Microsoft Cloud, supporting safer use of cheaper but interruptible compute capacity.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3487553.3524229' }],
-        imageUrl: '/paper-images/spot-vm-eviction-preview.png',
+        imageUrl: '/paper-images/spot-vm-eviction-figure.png',
         imageAlt: 'Spot virtual machine eviction prediction preview',
       },
     ],
@@ -1065,7 +1077,7 @@ export const workAreas: WorkArea[] = [
             href: 'https://www.science.org/eprint/VRHKZNXGPTPVY7TYDUIT/full?activationRedirect=/doi/full/10.1126/scirobotics.adv2250',
           },
         ],
-        imageUrl: '/paper-images/science-robotics-intention-preview.png',
+        imageUrl: '/paper-images/science-robotics-intention-figure.png',
         imageAlt: 'Cross-robot behavior adaptation preview',
         featured: true,
       },
@@ -1092,7 +1104,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Surveys and organizes multiparty interaction between people and socially interactive agents, connecting embodiment, turn-taking, and group dynamics.',
         links: [{ label: 'Chapter', href: 'https://doi.org/10.1145/3563659.3563665' }],
-        imageUrl: '/paper-images/multiparty-interaction-preview.png',
+        imageUrl: '/paper-images/multiparty-interaction-figure.png',
         imageAlt: 'Multiparty interaction between humans and social agents preview',
       },
       {
@@ -1118,7 +1130,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Compares how trajectory generation methods change viewer perception of robot approaches toward small groups.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/RO-MAN47096.2020.9223584' }],
-        imageUrl: '/paper-images/trajectory-generation-perception-preview.png',
+        imageUrl: '/paper-images/trajectory-generation-perception-figure.png',
         imageAlt: 'Trajectory generation perception preview',
       },
       {
@@ -1131,7 +1143,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Uses attention and graph neural network structures to recognize group behavior from socially situated observations.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.3233/FAIA200258' }],
-        imageUrl: '/paper-images/group-behavior-recognition-preview.png',
+        imageUrl: '/paper-images/group-behavior-recognition-figure.png',
         imageAlt: 'Group behavior recognition preview',
       },
       {
@@ -1156,8 +1168,12 @@ export const workAreas: WorkArea[] = [
         href: 'https://doi.org/10.1109/RO-MAN46459.2019.8956444',
         summary:
           'Learns robot approach behavior toward human groups using deep reinforcement learning, with social acceptability as a central criterion.',
-        links: [{ label: 'Paper', href: 'https://doi.org/10.1109/RO-MAN46459.2019.8956444' }],
-        imageUrl: '/paper-images/socially-appropriate-approach-rl-preview.png',
+        links: [
+          { label: 'Paper', href: 'https://doi.org/10.1109/RO-MAN46459.2019.8956444' },
+          { label: 'arXiv', href: 'https://arxiv.org/abs/1810.06979' },
+          { label: 'PDF', href: 'https://arxiv.org/pdf/1810.06979' },
+        ],
+        imageUrl: '/paper-images/socially-appropriate-approach-rl-figure.png',
         imageAlt: 'Socially appropriate robot approach reinforcement learning preview',
       },
       {
@@ -1170,7 +1186,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Learns approach trajectories for agents joining small groups, emphasizing social acceptability and group spatial structure.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3349537.3351895' }],
-        imageUrl: '/paper-images/app-lstm-preview.png',
+        imageUrl: '/paper-images/app-lstm-figure.png',
         imageAlt: 'App-LSTM social trajectory generation preview',
       },
       {
@@ -1183,7 +1199,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Studies crowd navigation strategies that account for both static and dynamic social groups.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/VS-Games.2019.8864512' }],
-        imageUrl: '/paper-images/social-aware-navigation-preview.png',
+        imageUrl: '/paper-images/social-aware-navigation-figure.png',
         imageAlt: 'Social-aware navigation preview',
       },
       {
@@ -1196,7 +1212,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Prioritizes collision avoidance decisions in crowds based on criticality, supporting safer local navigation choices.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3349537.3351887' }],
-        imageUrl: '/paper-images/criticality-collision-avoidance-preview.png',
+        imageUrl: '/paper-images/criticality-collision-avoidance-figure.png',
         imageAlt: 'Criticality-based collision avoidance preview',
       },
       {
@@ -1209,21 +1225,8 @@ export const workAreas: WorkArea[] = [
         summary:
           'Uses priority-driven local optimization to improve crowd simulation behavior in interaction-heavy scenarios.',
         links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.5555/3306127.3332050' }],
-        imageUrl: '/paper-images/priority-local-optimization-preview.png',
+        imageUrl: '/paper-images/priority-local-optimization-figure.png',
         imageAlt: 'Priority driven local optimization preview',
-      },
-      {
-        id: 'group-joining-vr',
-        title: 'Effect of Group Size on User Perception of Embodied Conversational Agents While Joining a Group in Immersive Virtual Reality',
-        venue: 'IVA',
-        year: '2019',
-        category: 'Immersive interaction',
-        href: 'https://dl.acm.org/doi/10.1145/3308532.3329421',
-        summary:
-          'Examines how group size changes human perception of embodied conversational agents joining groups in immersive virtual reality.',
-        links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.1145/3308532.3329421' }],
-        imageUrl: '/paper-images/group-joining-vr-preview.png',
-        imageAlt: 'Group joining in virtual reality preview',
       },
       {
         id: 'mixed-reality-social-distance',
@@ -1235,7 +1238,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Studies social distance judgments among humans, virtual humans, and virtual robots in mixed reality.',
         links: [{ label: 'Paper', href: 'https://dl.acm.org/doi/10.5555/3237383.3238137' }],
-        imageUrl: '/paper-images/mixed-reality-social-distance-preview.png',
+        imageUrl: '/paper-images/mixed-reality-social-distance-figure.png',
         imageAlt: 'Mixed reality social distance preview',
       },
       {
@@ -1248,7 +1251,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Examines how posture and embodiment influence social distance in human-agent mixed-reality interaction.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3267851.3267870' }],
-        imageUrl: '/paper-images/posture-embodiment-social-distance-preview.png',
+        imageUrl: '/paper-images/posture-embodiment-social-distance-figure.png',
         imageAlt: 'Posture and embodiment social distance preview',
       },
       {
@@ -1261,7 +1264,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Studies how crowd density and viewpoint affect whether observers perceive people as social groups.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3267851.3267877' }],
-        imageUrl: '/paper-images/crowd-density-group-perception-preview.png',
+        imageUrl: '/paper-images/crowd-density-group-perception-figure.png',
         imageAlt: 'Crowd density and group perception preview',
       },
       {
@@ -1274,7 +1277,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Models which neighbors pedestrians attend to in crowds, informing simulation and navigation behavior.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3267851.3267875' }],
-        imageUrl: '/paper-images/neighbor-perception-model-preview.png',
+        imageUrl: '/paper-images/neighbor-perception-model-figure.png',
         imageAlt: 'Pedestrian neighbor perception model preview',
       },
       {
@@ -1287,7 +1290,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Frames pedestrian simulation as a multi-objective reinforcement-learning problem balancing multiple behavioral constraints.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1145/3267851.3267914' }],
-        imageUrl: '/paper-images/pedestrian-simulation-morl-preview.png',
+        imageUrl: '/paper-images/pedestrian-simulation-morl-figure.png',
         imageAlt: 'Pedestrian simulation multi-objective reinforcement learning preview',
       },
       {
@@ -1300,7 +1303,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Explores mixed reality and virtual robots as a design method for human-robot interaction research.',
         links: [{ label: 'Paper', href: 'https://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-287336' }],
-        imageUrl: '/paper-images/mixed-reality-hri-design-preview.png',
+        imageUrl: '/paper-images/mixed-reality-hri-design-figure.png',
         imageAlt: 'Mixed reality HRI design preview',
       },
       {
@@ -1313,7 +1316,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Develops expressive virtual characters for social demonstration games, an early line connecting virtual agents and interactive learning.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1109/VS-GAMES.2017.8056604' }],
-        imageUrl: '/paper-images/expressive-virtual-characters-preview.png',
+        imageUrl: '/paper-images/expressive-virtual-characters-figure.png',
         imageAlt: 'Expressive virtual characters preview',
       },
       {
@@ -1326,7 +1329,7 @@ export const workAreas: WorkArea[] = [
         summary:
           'Demonstrates a mixed-reality virtual poster presenter, exploring situated presentation and interaction with virtual agents.',
         links: [{ label: 'Paper', href: 'https://doi.org/10.1007/978-3-319-67401-8_3' }],
-        imageUrl: '/paper-images/virtual-poster-presenter-preview.png',
+        imageUrl: '/paper-images/virtual-poster-presenter-figure.png',
         imageAlt: 'Virtual poster presenter preview',
       },
     ],
