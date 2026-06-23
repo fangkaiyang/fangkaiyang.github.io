@@ -1,7 +1,14 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 
-const workPages = ['computer-use', 'code-intelligence', 'reasoning-rag', 'cloud-intelligence', 'embodied-agents']
+const workPages = [
+  'computer-use',
+  'code-intelligence',
+  'reasoning-rag',
+  'model-learning',
+  'cloud-intelligence',
+  'embodied-agents',
+]
 
 export default defineConfig({
   build: {

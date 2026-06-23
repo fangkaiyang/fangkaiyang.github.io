@@ -1,9 +1,12 @@
 import './style.css'
 import {
   biographyParagraphs,
+  contactEmail,
   newsItems,
   profileLinks,
+  recruitingNote,
   workAreas,
+  type PatentRecord,
   type ProfileLink,
   type Publication,
   type RichTextPart,
@@ -104,7 +107,30 @@ const renderPublication = (publication: Publication, areaSlug?: string, isCompac
   </article>
 `
 
+const renderPatentRecord = (patent: PatentRecord) => `
+  <article class="patent-record">
+    <div class="publication-meta">
+      <span>${escapeHtml(patent.category)}</span>
+      <span>${escapeHtml(patent.venue)}</span>
+      <span>${escapeHtml(patent.year)}</span>
+    </div>
+    <h3><a href="${escapeHtml(patent.href)}" target="_blank" rel="noreferrer">${escapeHtml(patent.title)}</a></h3>
+    <p>${escapeHtml(patent.summary)}</p>
+    <div class="publication-links">
+      ${(patent.links ?? [{ label: 'Patent', href: patent.href }]).map((link) => renderExternalLink(link, 'paper-link')).join('')}
+    </div>
+  </article>
+`
+
 const getHomepagePublications = (area: WorkArea) => {
+  if (area.homepagePublicationIds?.length) {
+    const publicationsById = new Map(area.publications.map((publication) => [publication.id, publication]))
+
+    return area.homepagePublicationIds
+      .map((publicationId) => publicationsById.get(publicationId))
+      .filter((publication): publication is Publication => Boolean(publication))
+  }
+
   const featured = area.publications.filter((publication) => publication.featured)
   const candidates = featured.length >= 2 ? featured : area.publications.slice(0, 3)
 
@@ -147,36 +173,29 @@ const renderHome = () => {
           />
         </div>
         <div class="hero-copy">
-          <p class="eyebrow">Microsoft Research Asia / Data, Knowledge, and Intelligence</p>
+          <p class="eyebrow">About</p>
           <h1 id="hero-title">Fangkai Yang</h1>
+          <p class="email-line">
+            <a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a>
+          </p>
           <p class="lead">
             I build agentic AI systems that can use software, reason over structured knowledge,
             write and evaluate code, and make reliable decisions in production and embodied environments.
           </p>
+          <div class="hero-bio">
+            ${biographyParagraphs.map((paragraph) => `<p>${renderRichText(paragraph)}</p>`).join('')}
+          </div>
+          <p class="recruiting-note">${escapeHtml(recruitingNote)}</p>
           <div class="profile-links" aria-label="Scholarly and research group links">
             ${profileLinks.map((link) => renderExternalLink(link)).join('')}
           </div>
         </div>
       </section>
 
-      <section class="section split-section" aria-labelledby="about-title">
-        <div>
-          <p class="section-kicker">About</p>
-          <h2 id="about-title">Research across agents, systems, and social intelligence.</h2>
-        </div>
-        <div class="prose">
-          ${biographyParagraphs.map((paragraph) => `<p>${renderRichText(paragraph)}</p>`).join('')}
-        </div>
-      </section>
-
       <section id="research" class="section" aria-labelledby="research-title">
         <div class="section-heading">
           <p class="section-kicker">Research Areas</p>
-          <h2 id="research-title">Selected papers by category</h2>
-          <p>
-            Each section gives the short version of a research direction and highlights a few representative papers.
-            The linked subpages keep the fuller Google Scholar-derived publication lists.
-          </p>
+          <h2 id="research-title">Selected work by area</h2>
         </div>
         <div id="publications" class="area-section-list">
           ${workAreas.map((area) => renderHomeAreaSection(area)).join('')}
@@ -205,7 +224,9 @@ const renderHome = () => {
       <section id="contact" class="section contact-section" aria-labelledby="contact-title">
         <div>
           <p class="section-kicker">Contact</p>
-          <h2 id="contact-title">Scholarly profiles and research groups</h2>
+          <h2 id="contact-title">Email and scholarly profiles</h2>
+          <p class="contact-email"><a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a></p>
+          <p class="contact-note">${escapeHtml(recruitingNote)}</p>
         </div>
         <div class="contact-links">
           ${profileLinks.map((link) => renderExternalLink(link, 'contact-link')).join('')}
@@ -239,14 +260,27 @@ const renderCategoryPage = (area: WorkArea) => {
         <div class="section-heading compact-heading">
           <p class="section-kicker">Publication List</p>
           <h2 id="category-publications-title">${escapeHtml(area.publications.length.toString())} papers in this program</h2>
-          <p>
-            Papers are ordered from newest to oldest, with project, code, PDF, or publisher links where available.
-          </p>
         </div>
         <div class="publication-list category-publication-list">
           ${area.publications.map((publication) => renderPublication(publication)).join('')}
         </div>
       </section>
+
+      ${
+        area.patents?.length
+          ? `
+            <section class="section" aria-labelledby="category-patents-title">
+              <div class="section-heading compact-heading">
+                <p class="section-kicker">Patents</p>
+                <h2 id="category-patents-title">Patents and invention records</h2>
+              </div>
+              <div class="patent-list">
+                ${area.patents.map((patent) => renderPatentRecord(patent)).join('')}
+              </div>
+            </section>
+          `
+          : ''
+      }
     </main>
   `
 }

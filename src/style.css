@@ -135,7 +135,7 @@ main {
 }
 
 .hero-section {
-  align-items: center;
+  align-items: start;
   display: grid;
   gap: 40px;
   grid-template-columns: 220px minmax(0, 1fr);
@@ -176,12 +176,46 @@ main {
   margin-top: 9px;
 }
 
+.email-line {
+  color: var(--text-soft);
+  font-size: 15px;
+  font-weight: 660;
+  margin-top: 7px;
+}
+
 .lead {
   color: var(--text);
   font-size: 20px;
   line-height: 1.55;
   margin-top: 18px;
   max-width: 780px;
+}
+
+.hero-bio {
+  color: var(--text-soft);
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  max-width: 760px;
+}
+
+.hero-bio p {
+  font-size: 15px;
+  line-height: 1.62;
+}
+
+.recruiting-note,
+.contact-note {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 640;
+  line-height: 1.55;
+}
+
+.recruiting-note {
+  border-left: 3px solid var(--green);
+  margin-top: 18px;
+  padding-left: 13px;
 }
 
 .profile-links,
@@ -431,6 +465,18 @@ main {
   margin-top: 2px;
 }
 
+.contact-email {
+  font-size: 15px;
+  font-weight: 660;
+  margin-top: 14px;
+}
+
+.contact-note {
+  color: var(--text-soft);
+  margin-top: 12px;
+  max-width: 580px;
+}
+
 .category-main {
   max-width: 1040px;
 }
@@ -473,6 +519,43 @@ main {
 
 .category-publication-list .publication-card {
   grid-template-columns: 190px minmax(0, 1fr);
+}
+
+.patent-list {
+  border-top: 1px solid var(--rule);
+  display: grid;
+}
+
+.patent-record {
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 0;
+}
+
+.patent-record h3 {
+  font-size: 17px;
+  line-height: 1.32;
+  margin-top: 8px;
+}
+
+.patent-record h3 a {
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.patent-record h3 a:hover {
+  color: var(--accent-strong);
+}
+
+.patent-record p {
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.52;
+  margin-top: 8px;
+  max-width: 780px;
+}
+
+.patent-record .publication-links {
+  margin-top: 10px;
 }
 
 @media (max-width: 960px) {

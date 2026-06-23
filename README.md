@@ -23,9 +23,11 @@ Publication entries live in `src/data.ts`. The homepage is organized as research
 
 - Computer-using agents and GUI intelligence
 - Repository and code intelligence
-- Reasoning, RAG, and model learning
+- LLM reasoning, RAG, and applications
+- Model learning, training, and alignment
 - Cloud intelligence and autonomic systems
 - Human-aware robotics and embodied agents
 
 Each publication supports an optional `imageUrl` and `imageAlt` field for paper teaser images.
+Patents and invention records are stored separately from publication lists and render without teaser images.
 Use Google Scholar, ORCID, user-confirmed facts, and primary paper/project pages as identity and publication anchors; avoid importing from merged same-name records without manual verification. Duplicate preprint/conference title variants can be represented by the canonical publication entry. Raw downloaded PDFs or TeX sources should stay in the ignored `paper-artifacts/` folder.
