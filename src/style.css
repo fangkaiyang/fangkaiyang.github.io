@@ -500,26 +500,6 @@ main {
   margin-bottom: 26px;
 }
 
-.floating-home-link {
-  background: rgba(251, 251, 250, 0.96);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  box-shadow: rgba(18, 24, 32, 0.06) 0 8px 22px;
-  color: var(--accent-strong);
-  font-size: 13px;
-  font-weight: 720;
-  padding: 8px 11px;
-  position: fixed;
-  right: max(18px, calc((100vw - 1040px) / 2 + 18px));
-  text-decoration: none;
-  top: 82px;
-  z-index: 9;
-}
-
-.floating-home-link:hover {
-  color: var(--blue);
-}
-
 .category-question {
   background: var(--surface);
   border: 1px solid var(--rule);
@@ -626,12 +606,6 @@ main {
   .site-header nav {
     flex-wrap: wrap;
     gap: 12px 15px;
-  }
-
-  .floating-home-link {
-    bottom: 14px;
-    right: 14px;
-    top: auto;
   }
 
   main {

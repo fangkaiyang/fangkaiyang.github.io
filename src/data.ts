@@ -644,7 +644,7 @@ export const workAreas: WorkArea[] = [
     question:
       'How can model-training methods make LLMs and agents more reliable, capable, and aligned with task feedback?',
     keywords: ['reinforcement learning', 'reward learning', 'value learning', 'self-refinement', 'model training'],
-    homepagePublicationIds: ['dvpo', 'reprompt', 'learning-to-refine', 'self-evolved-reward-learning', 'warriormath'],
+    homepagePublicationIds: ['dvpo', 'reprompt', 'learning-to-refine', 'self-evolved-reward-learning', 'token-level-ppo'],
     publications: [
       {
         id: 'reprompt',
@@ -769,7 +769,7 @@ export const workAreas: WorkArea[] = [
     question:
       'How can large-scale services use data and learning to make operational decisions safely under uncertainty?',
     keywords: ['Microsoft 365', 'resource oversubscription', 'failure mitigation', 'cloud storage', 'temporal prediction'],
-    homepagePublicationIds: ['protorail', 'self-learning-microservices', 'autonomic-computing-vision'],
+    homepagePublicationIds: ['snape', 'te-pid', 'decommissioning-prediction', 'nenya', 'diffusion-failure-prediction'],
     patents: [
       {
         id: 'dynamic-vm-adjustment-patent-application',
@@ -1328,19 +1328,6 @@ export const workAreas: WorkArea[] = [
         links: [{ label: 'Paper', href: 'https://doi.org/10.1007/978-3-319-67401-8_3' }],
         imageUrl: '/paper-images/virtual-poster-presenter-preview.png',
         imageAlt: 'Virtual poster presenter preview',
-      },
-      {
-        id: 'collision-detection-displacement-surfaces',
-        title: 'Collision Detection Between Dynamic Rigid Objects and Static Displacement Mapped Surfaces in Computer Games',
-        venue: 'KTH Publication Database DiVA',
-        year: '2015',
-        category: 'Computer graphics',
-        href: 'https://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-170625',
-        summary:
-          'Early work on collision detection between dynamic rigid objects and displacement-mapped surfaces in games.',
-        links: [{ label: 'Paper', href: 'https://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-170625' }],
-        imageUrl: '/paper-images/collision-detection-displacement-surfaces-preview.png',
-        imageAlt: 'Collision detection and displacement mapped surfaces preview',
       },
     ],
   },

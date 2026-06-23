@@ -247,10 +247,8 @@ const renderCategoryPage = (area: WorkArea) => {
 
   return `
     ${renderHeader()}
-    <a class="floating-home-link" href="/">Back to homepage</a>
     <main id="top" class="category-main">
       <section class="category-hero" aria-labelledby="category-title">
-        <a class="back-link" href="/">Back to homepage</a>
         <p class="eyebrow">${escapeHtml(area.eyebrow)}</p>
         <h1 id="category-title">${escapeHtml(area.title)}</h1>
         <p class="lead">${escapeHtml(area.description)}</p>
