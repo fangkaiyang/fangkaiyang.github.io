@@ -34,11 +34,17 @@ const escapeHtml = (value: string) =>
 
 const workHref = (slug: string) => `/work/${slug}/`
 
-const renderExternalLink = (link: ProfileLink, className = 'link') => `
-  <a class="${className}" href="${escapeHtml(link.href)}" target="_blank" rel="noreferrer">
-    ${escapeHtml(link.label)}
-  </a>
-`
+const renderExternalLink = (link: ProfileLink, className = 'link') => {
+  if (className === 'inline-link') {
+    return `<a class="${className}" href="${escapeHtml(link.href)}" target="_blank" rel="noreferrer">${escapeHtml(link.label)}</a>`
+  }
+
+  return `
+    <a class="${className}" href="${escapeHtml(link.href)}" target="_blank" rel="noreferrer">
+      ${escapeHtml(link.label)}
+    </a>
+  `
+}
 
 const renderRichText = (parts: RichTextPart[]) =>
   parts
@@ -141,7 +147,7 @@ const renderHomeAreaSection = (area: WorkArea) => `
   <article class="area-section" id="${escapeHtml(area.slug)}">
     <div class="area-intro">
       <p class="section-kicker">${escapeHtml(area.eyebrow)}</p>
-      <h3>${escapeHtml(area.title)}</h3>
+      <h3><a class="area-title-link" href="${workHref(area.slug)}">${escapeHtml(area.title)}</a></h3>
       <p>${escapeHtml(area.homepageSummary)}</p>
       <ul class="keyword-list">
         ${area.keywords.map((keyword) => `<li>${escapeHtml(keyword)}</li>`).join('')}
@@ -241,6 +247,7 @@ const renderCategoryPage = (area: WorkArea) => {
 
   return `
     ${renderHeader()}
+    <a class="floating-home-link" href="/">Back to homepage</a>
     <main id="top" class="category-main">
       <section class="category-hero" aria-labelledby="category-title">
         <a class="back-link" href="/">Back to homepage</a>
@@ -259,7 +266,7 @@ const renderCategoryPage = (area: WorkArea) => {
       <section class="section" aria-labelledby="category-publications-title">
         <div class="section-heading compact-heading">
           <p class="section-kicker">Publication List</p>
-          <h2 id="category-publications-title">${escapeHtml(area.publications.length.toString())} papers in this program</h2>
+          <h2 id="category-publications-title">Publications</h2>
         </div>
         <div class="publication-list category-publication-list">
           ${area.publications.map((publication) => renderPublication(publication)).join('')}
@@ -281,6 +288,9 @@ const renderCategoryPage = (area: WorkArea) => {
           `
           : ''
       }
+      <nav class="category-footer-nav" aria-label="Category page navigation">
+        <a class="back-link bottom-back-link" href="/">Back to homepage</a>
+      </nav>
     </main>
   `
 }
