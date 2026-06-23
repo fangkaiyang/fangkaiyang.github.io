@@ -241,7 +241,7 @@ const renderHome = () => {
         </div>
         <div class="hero-copy">
           <p class="eyebrow">About</p>
-          <h1 id="hero-title">Fangkai Yang</h1>
+          <h1 id="hero-title">杨方凯 Fangkai Yang</h1>
           <p class="email-line">
             <a href="mailto:${escapeHtml(contactEmail)}">${escapeHtml(contactEmail)}</a>
           </p>
