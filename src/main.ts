@@ -224,7 +224,7 @@ const hydrateVisitorWidget = () => {
 }
 
 const renderHome = () => {
-  document.title = '杨方凯 Fangkai Yang | Microsoft Research'
+  document.title = '杨方凯 Fangkai Yang | Senior Researcher at Microsoft'
 
   return `
     ${renderHeader()}

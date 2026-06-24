@@ -78,7 +78,7 @@ export const biographyParagraphs: RichTextPart[][] = [
       label: 'DKI group',
       href: 'https://www.microsoft.com/en-us/research/group/data-knowledge-intelligence/',
     },
-    ' at Microsoft Research. My current work studies agentic AI systems: computer-using agents, GUI grounding, repository-level code intelligence, retrieval-augmented reasoning, and model-learning methods that make agents more reliable in real workflows.',
+    ' at Microsoft. My current work studies agentic AI systems: computer-using agents, GUI grounding, repository-level code intelligence, retrieval-augmented reasoning, and model-learning methods that make agents more reliable in real workflows.',
   ],
   [
     'Before joining Microsoft, I received my bachelor degree from Zhejiang University and my master and PhD degrees from KTH Royal Institute of Technology, where I worked in the ',
@@ -106,7 +106,7 @@ export const biographyParagraphs: RichTextPart[][] = [
 export const quickFacts: QuickFact[] = [
   {
     label: 'Current affiliation',
-    value: 'Microsoft Research, DKI group',
+    value: 'Microsoft, DKI group',
   },
   {
     label: 'Education',
